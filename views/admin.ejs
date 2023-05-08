@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <%- include('./partials/head') %>
+    <%- include('./partials/header') %>
+    <style>
+       
+        input, button{
+            display:block;
+            height:30px;
+            width:350px;
+            margin:10px 0px;
+            
+        }
+        button{
+            background:rgb(103, 103, 194);
+            color:whtie;
+        }
+        textarea{
+            width:350px;
+        }
+        #div{
+           
+            height:auto;
+            width:350px;
+            margin:0px auto;
+        }
+    </style>
+    <body>
+        <div id="div">
+            <!-- NEW FIELD-->
+            <h1>TIME LINE</h1>
+            <form name="Blog" method="post" action="/admin" enctype="multipart/form-data">
+                <fieldset>
+                <input type="hidden" name="formType" value="Blog">
+                <input type="text" name="artist_name" placeholder="Enter aritst name" required/>
+                <input type="text" name="header" placeholder="About the song" required/>
+                <textarea rows="10" name="content" >Enter Lyrics</textarea>
+                <label>Image</label><input type="file" name="image" required/> 
+                <label>Audio</label><input type="file" name="audio" required/> 
+                <button>Upload </button>
+                </fieldset>
+            </form>
+            <!--TIME LINE-->
+            <h1>NEWS FIELD</h1>
+            <form method="post" action="/admin" enctype="multipart/form-data">
+                <fieldset>
+                <input type="hidden" name="formType" value="Blogn"/>
+                <input type="text" name="helder" placeholder="Content helder" required/>
+                <textarea rows="10" name="news">news</textarea><br/>
+                <label>Upload Image</label><input type="file" name="image" required/>
+                <button>Upload </button>
+                </fieldset>
+                
+            </form>
+            <!--DOWNLOAD SONGS-->
+            <h1>TOP SONGS</h1>
+            
+                <form method="post" action="/admin" enctype="multipart/form-data">
+                    <fieldset>
+                        <input type="hidden" name="formType" value="Blogd"/>
+                        <input type="text" name="artist_name" placeholder="Artist name" required/>
+                        <input type="text" name="comment" placeholder="Enter Comment" required/>
+                        <input type="text" name="dlink" placeholder="Enter download link" required/>
+                        <input type="text" name="plink" placeholder="Enter play link" required/>
+                        <label>Upload Image</label><input type="file" name="image" required/>
+                        <button>Upload </button>
+                    </fieldset>
+                </form>                  
+         
+
+            <h1>FUNNY VIDEO</h1>
+            <fieldset>
+            <form method="post" action="/admin" enctype="multipart/form-data">
+                <input type="hidden" name="formType" value="Blogv">
+                <input type="text" name="content" placeholder="Add comment" required/>
+                <input type="text" name="link" placeholder="Enter link here" required/>
+                <button>Upload </button>
+            </form>
+            </fieldset>
+        </div>
+        <script src="main.js"></script>
+    </body>
+</html>
