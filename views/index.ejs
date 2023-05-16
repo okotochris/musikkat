@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html>
+	<%- include('./partials/head.ejs') %>
+	
+	
+	<body>
+		<%- include('./partials/header.ejs') %>
+		
+		<div style="background:url('./music design.jpg'); height:300px;"  class="design_container">
+            <h2  style="padding-top:20px;">download latest africa upcoming artist songs</h2>
+            <p>show love to your boys!! </p>
+            <div class="container" >
+                <div class="search-container">
+                    <input type="text" placeholder="Search for content" class="search"/><label>Search</label>
+                </div>	
+            </div>
+        </div>
+			<div class="image-container">
+				<div class="image-display">
+					<% if(blogs.length>0){ %>
+					<%	blogs.forEach(blog=>{	%>
+							<p><img src="<%= blog.image %>" class="pix"/> <%= blog.artist_name %></p>
+
+						<%})%>
+
+					<% }else{  %>
+							<h2>NO NETWORK REFRESH!!!!!</h2>
+						
+
+					<% } %>
+					<p id="Abraham_chiab"><img src="chiab.jpg" alt="chiab img" class="pix"/>  Abraham Chiab</p>
+						
+					<p id="02ice"><img src="o2ice.jpg" alt="chiab img" class="pix"/>  02ice</p>
+					
+						<a><img src="chiab.jpg" alt="chiab img" class="pix"/>  Abraham Chiab</a>
+						<a><img src="o2ice.jpg" alt="chiab img" class="pix"/>  02ice</a>
+						<a><img src="chiab.jpg" alt="chiab img" class="pix"/>  Abraham Chiab</a>
+						<a><img src="o2ice.jpg" alt="chiab img" class="pix"/>  02ice</a>
+				</div>
+			</div>
+		</div>
+		<div class="form">
+			<form method="post" action="" >
+				<p><input type="text" placeholder="Enter your request" name="cleint req" required/></p>
+				<p><input type="email" placeholder="Enter your email" name="client email"required/></p>
+				<p><input type="number" placeholder="Enter your phone No." name="client phone" required/></p>
+				<p><button>Contact Us</button></p>
+			</form>
+			<div id="form_cancel"style="height:25px; width:25px; background:blue; position:absolute; bottom:0px;"></div>
+		</div>
+						
+				<!-------- UP coming latest songs---------->
+						
+				<div class="upcoming">
+					<div id="fside">
+						
+						
+						</aside>
+						
+								<% if(blogs.length > 0){ %>
+								<%	blogs.forEach(blog=>{ %>
+						<aside>
+							<div class="upcoming_download">
+								<img src="<%=blog.image %>" alt="chiab img" class="pix1"/>
+								<h2><%= blog.artist_name %></h2>
+								<p><%= blog.header %></p><a href="/<%=blog._id %>" style="color:rgb(125, 125, 199); cursor:pointer; ">see more...</a>
+							</div>	
+								<img src="<%= blog.image %>" alt="02ice"  class="dimg"/><br/>
+
+							<div class="upcoming_load">
+								<div style="height:30px; width:200px; overflow:hidden;"><p>for advert contact us </p></div>	
+								<div class="details-audio">
+									<a href="<%= blog.audio %>" download><img src="download icon.png" style="height:25px; width:25px;" /></a>
+									<audio controls loop> <source src="<%= blog.audio %>" type="audio/mp3"/> </audio>
+								</div> 
+								<div class="see_more"><a style="color:blue;" href="/<%=blog._id %>">lyrics....</a></div>				
+							</div>
+				<hr/>									
+									<% }) %>
+								<%	}else { %>
+									<h3> NO CONTENT TO DISPLAY </h3>
+								<% } %>
+						</aside>
+
+					
+					</div>
+				</div>	  
+				
+				
+			</div>
+			<script src="main.js"></script>

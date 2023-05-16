@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <%-include('partials/head.ejs') %>
+
+    <body>
+        <%- include('partials/header.ejs') %>
+
+        <div style="background:url('./news headline.jpg');"  class="design_container">
+            <h1  style="padding-top:20px;">download latest africa music song</h1>
+            <p>follow and download your favourite Artist Song and stream songs online and lot more </p>
+            <div class="container" >
+                <div class="search-container">
+                    <input type="text" placeholder="Search for content" class="search"/><label>Search</label>
+                </div>	
+            </div>
+        </div>
+    
+			
+            <div class="news_field"> 
+                <div class="news">
+
+                    <div style="position:relative; width:100%;">
+                      <%  if(blogns.length > 0){ %>
+                       <%     blogns.forEach(blogn=>{ %>
+                                <h2><%= blogn.helder   %></h2>
+                                <img src="<%= blogn.image %>" class="celebrity"/>   
+                                <div style="height:180px; overflow:hidden;">
+                                    <p> <%= blogn.news %> </p>
+                                </div><div class="see_more"><a style="color:blue;" href="./news_field/<%=blogn._id %>">lyrics....</a></div>
+                               
+                                <div class="likes">
+                                    <span style="height:auto; width:auto; padding:0px 0px 0px 2px;">333</span><img src="like.png" style="height:25px; width:25px"/>
+                                    <span style="height:auto; width:auto; padding:0px 0px 0px 2px;">3k</span><img src="dislike.png" style="height:25px; width:25px"/>
+                                </div>
+                                <div class="clear_float"  ></div>
+                           
+                                <hr/>
+                         <%   }) %>
+                     <%   }else{ %>
+                            <h2>NO CONTENT TO DISPLAY PLEAE MAKE SURE YOUR INTERNET IS ON </h2>
+                       <% } %>
+                    </div>
+
+
+
+                       
+                       
+                </div>     
+            </div>
+                        <script src="main.js"></script> 
+    </body>
+</html>

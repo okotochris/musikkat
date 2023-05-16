@@ -1,0 +1,53 @@
+<%- include('./partials/head.ejs') %>
+
+<body>
+    <%- include('./partials/header') %>
+    <div style="padding-top:100px;"></div>
+   
+    <div class="details_container">
+        <div>
+            <img src="musikkat.png" style="height:100px; width:150px"/>
+        </div>
+        <div class="details">
+            <h2><%= blog.artist_name %></h2>
+            <div class="about">
+                <p> <%= blog.header %></p>
+            </div>
+            <img src="<%= blog.image %>" style="height:420px; width:350px;" />
+            <div class="lyrics">
+                <p>
+                    <%= blog.lyrics %>
+                
+                </p>
+            </div>
+            <div class="details-audio">
+                <a href=" <%= blog.audio %>" download><img src="download icon.png" style="height:25px; width:25px;" /></a>
+                <audio controls loop> <source src="<%= blog.audio %>"> </audio>
+            </div> 
+
+            <p style="color:yellow;">feel the heat with musikkat! stay tune and we bring the world of entertainment to you </p>
+            follow us on our social media platform 
+            <div id="details_link">
+                <a href="http://facebook.com/okoto.chris"><img src="Facebook.jpg"  /></a> 
+                <a href="http://wa.me/09157303724"> <img src="Whatsapp.png"/></a> 
+                <a href=""><img src="tiktok.png"/></a>
+                <a href=""> <img src="Instagram.jfif"/> </a>
+                <a href=""> <img src="Gmail.jfif"/></a>
+            </div>
+        </div>
+
+
+        
+    </div>
+    <div class="page_advert">
+            <div></div>
+            <div></div>
+            <div></div>
+    </div>
+    <footer style="height:50px; width:100px; margin:0px auto; color:yellow;">
+        <p>&copy; Musikkat</p>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+
