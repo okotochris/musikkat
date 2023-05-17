@@ -170,8 +170,7 @@ app.post('/admin', upload.fields([{ name: "image" }, { name: "audio" }]), (req, 
 	const id = req.params.id;
 	Blogn.findById(id)
 	  .then(result=>{
-		console.log(result)
-		res.render('detailsn', {blogn:result, title:'More'})
+			res.render('detailsn', {blogn:result, title:'More'})
 	  })
 	  .catch(err=>{
 		console.log(err);

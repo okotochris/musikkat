@@ -22,11 +22,11 @@
                     <div style="position:relative; width:100%;">
                       <%  if(blogns.length > 0){ %>
                        <%     blogns.forEach(blogn=>{ %>
-                                <h2><%= blogn.helder   %></h2>
+                        <a href="./news_field/<%=blogn._id %>"> <h2><%= blogn.helder   %></h2>
                                 <img src="<%= blogn.image %>" class="celebrity"/>   
-                                <div style="height:180px; overflow:hidden;">
+                                <div style="height:180px; overflow:hidden; color:white;">
                                     <p> <%= blogn.news %> </p>
-                                </div><div class="see_more"><a style="color:blue;" href="./news_field/<%=blogn._id %>">lyrics....</a></div>
+                                </div></a>
                                
                                 <div class="likes">
                                     <span style="height:auto; width:auto; padding:0px 0px 0px 2px;">333</span><img src="like.png" style="height:25px; width:25px"/>
