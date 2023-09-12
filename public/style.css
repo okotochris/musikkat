@@ -151,6 +151,7 @@ header{
 }
 .search-container{
 	width:100%;
+	position:static;
 	display: flex;
   	align-items: center;
   	justify-content: center;
@@ -250,11 +251,7 @@ a:hover{
 	position:relative;
 	top:0px;
 	
-	}
-.sect:hover{
-	overflow-x:scroll;
 }
-
 nav {
 	position:sticky;
 	top:60px;
@@ -296,7 +293,7 @@ section div{
 	font-size:20px;
 	background:rgba(50,50,50,0.9);
 	box-shadow:-5px -5px 5px #777777;
-	padding:10px;
+	
 	
 }
 
@@ -630,7 +627,9 @@ div h2, h1{
 }
 @media screen and (max-width:800px){
 	.details{
-		width:100%;
+		width:100vw;
+		overflow:hidden;
+	
 	}
 }
 #details_link{

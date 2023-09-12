@@ -5,6 +5,7 @@ const Blog= require('./blog');
 const Blogv= require('./blogv');
 const Blogn= require('./blogn');
 const Blogd= require('./blogd');
+const Blogg= require('./blogg');
 
 
 const dbUI= "mongodb+srv://bigdreamtech:hEB2eCSrJbA32irw@form.ilrxl.mongodb.net/?retryWrites=true&w=majority";
@@ -63,6 +64,25 @@ app.get('/top_song', (req, res)=>{
 		console.log(err)
 	})
 })
+app.get('/godspel', (req, res)=>{
+	Blogg.find().sort({createdArt:-1})
+.then(result=>{
+	res.render('godspel',{title: "Godspel", bloggs: result })
+})
+})
+
+app.get('/godspel/:id', (req, res)=>{
+	const id = req.params.id;
+	Blogg.findById(id)
+	  .then(result=>{
+		res.render('detailsg', {blogg:result, title:'More'})
+	  })
+	  .catch(err=>{
+		console.log(err);
+		res.status(404).render('404', {title:'404'})
+	  });
+  }) 
+
 app.get('/news_field', (req, res)=>{
 	Blogn.find().sort({createdAt:-1})
 	.then(result=>{
@@ -102,8 +122,7 @@ app.post('/admin', upload.fields([{ name: "image" }, { name: "audio" }]), (req, 
 	  blog.save(req.body)
 		.then(result => {
 		  res.redirect('admin')
-		  console.log(req.body)
-		})
+		 })
 		.catch(err => {
 		  console.log(err)
 		})
@@ -119,7 +138,7 @@ app.post('/admin', upload.fields([{ name: "image" }, { name: "audio" }]), (req, 
 	  blogd.save()
 		.then(result => {
 		  res.redirect('admin');
-		  console.log(req.files["image"][0].filename)
+		 
 		})
 		.catch(err => {
 		  console.log(err)
@@ -129,8 +148,7 @@ app.post('/admin', upload.fields([{ name: "image" }, { name: "audio" }]), (req, 
 	  blogv.save()
 		.then(result => {
 		  res.redirect('admin')
-		  console.log(req.body)
-		})
+		  })
 		.catch(err => {
 		  console.log(err)
 		})
@@ -150,15 +168,29 @@ app.post('/admin', upload.fields([{ name: "image" }, { name: "audio" }]), (req, 
 		  console.log(err)
 		})
 	} else {
-	  console.log('you haven\'t treated this form yet')
-	  res.redirect('admin')
+		console.log('Gospel blog visited')
+		const blogg = new Blogg({
+			artist_name: req.body.artist_name,
+			comment: req.body.comment,
+			lyrics: req.body.lyrics,
+			dlink: req.body.dlink,
+			plink: req.body.plink,
+			image: req.files["image"][0].filename
+		})
+		blogg.save()
+		.then(result => {
+			
+		  res.redirect('admin');
+		})
+		.catch(err => {
+		  console.log(err)
+		})
 	}
   })
   app.get('/top_song/:id', (req, res)=>{
 	const id = req.params.id;
 	Blogd.findById(id)
 	  .then(result=>{
-		console.log(result)
 		res.render('detailsd', {blogd:result, title:'More'})
 	  })
 	  .catch(err=>{
@@ -166,6 +198,7 @@ app.post('/admin', upload.fields([{ name: "image" }, { name: "audio" }]), (req, 
 		res.status(404).render('404', {title:'404'})
 	  });
   }) 
+  
   app.get('/news_field/:id', (req, res)=>{
 	const id = req.params.id;
 	Blogn.findById(id)
@@ -188,7 +221,6 @@ app.post('/admin', upload.fields([{ name: "image" }, { name: "audio" }]), (req, 
   
 	Blog.findById(id)
 	  .then(result=>{
-		console.log(result)
 		res.render('details', {blog:result, title:'More'})
 	  })
 	  .catch(err=>{
