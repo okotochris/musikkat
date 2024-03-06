@@ -39,10 +39,28 @@
 
         
     </div>
+    <div class="more_songs">
+        <p>download more songs </p>
+        <p>Stream and download mor of your favourite songs </p>
+    </div>
+    
     <div class="page_advert">
-            <div></div>
-            <div></div>
-            <div></div>
+        
+        <% if (news.length > 0) { %>
+            <% for (let i = 0; i < Math.min(4, news.length); i++) { %>
+                <a href="/news_field">
+                    <div class="page_advert_details">
+                        <%= news[i].helder %>
+                        <img src="../<%= news[i].image %>" type="image/jpeg" alt="image"/>
+                        <div><%= news[i].news %></div>
+                    </div>
+                </a>
+            <% } %>
+        <% } else { %>
+            <h2>no content to display</h2>
+        <% } %>
+        
+        
     </div>
     <footer style="height:50px; width:100px; margin:0px auto; color:yellow;">
         <p>&copy; Musikkat</p>

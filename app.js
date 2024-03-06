@@ -17,13 +17,15 @@ mongoose.connect(dbUI)
 	console.log(err);
 })
 const app= express();
+// PORT CONNECTION
 
-app.listen(3001, (err)=>{
+const PORT = process.env.PORT || 3000
+app.listen(PORT, (err)=>{
 	if(err){
 		console.log(err);
 	}
 	else{
-		console.log("port running at 3001");
+		console.log(`Port running in ${PORT}`);
 		}
 })
 	app.set('view engine', 'ejs');
@@ -44,7 +46,7 @@ app.listen(3001, (err)=>{
 	  })
 	  
 	  const upload = multer({ storage: filestorage })
-	
+//HOME PAGE FOR UPCOMING ARTIST
 app.get('/', (req, res)=>{
 	Blog.find().sort({createdAt:-1})
 	.then((result)=>{
@@ -54,7 +56,7 @@ app.get('/', (req, res)=>{
 		console.log(err) 
 	})
 })
-
+// TOP NIGERIA AND FOREING MUSICIAN 
 app.get('/top_song', (req, res)=>{
 	Blogd.find().sort({createdAt:-1})
 	.then(result=>{
@@ -64,6 +66,18 @@ app.get('/top_song', (req, res)=>{
 		console.log(err)
 	})
 })
+app.get('/top_song/:id', async (req, res)=>{
+	const id = req.params.id;
+	try{
+		const result = await Blogd.findById(id)
+		const top_songs = await Blogd.find()
+		res.render('detailsd', {blogd:result, blogs: top_songs, title:'More'})
+	}
+	catch(err){
+		console.log(err)
+	}
+  }) 
+//godspel songs API
 app.get('/godspel', (req, res)=>{
 	Blogg.find().sort({createdArt:-1})
 .then(result=>{
@@ -71,18 +85,21 @@ app.get('/godspel', (req, res)=>{
 })
 })
 
-app.get('/godspel/:id', (req, res)=>{
+app.get('/godspel/:id', async (req, res)=>{
 	const id = req.params.id;
-	Blogg.findById(id)
-	  .then(result=>{
-		res.render('detailsg', {blogg:result, title:'More'})
-	  })
-	  .catch(err=>{
-		console.log(err);
-		res.status(404).render('404', {title:'404'})
-	  });
+	try{
+		const godspelsong = await Blogg.findById(id)
+		const top_song = await Blogd.find()
+		console.log(top_song.image)
+		//const godspelsong = promise.json()
+		res.render('detailsg', {blogg: godspelsong, blogs:top_song, title: 'more'})
+	}
+	catch(err){
+		console.log(err)
+	}
+	
   }) 
-
+// NEWS FIELD
 app.get('/news_field', (req, res)=>{
 	Blogn.find().sort({createdAt:-1})
 	.then(result=>{
@@ -92,10 +109,23 @@ app.get('/news_field', (req, res)=>{
 		console.log(err);
 	})
 })
+app.get('/news_field/:id', async (req, res)=>{
+	const id = req.params.id;
+	try{
+		const result = await Blogn.findById(id)
+		const upComming = await Blog.find()
+		res.render('detailsn', {blogn:result, blogs:upComming, title:'More'})
+	}
+	catch(err){
+		console.log(err)
+	}
+  }) 
 
+//ABOUT THE AUTHOR OF THE SITE 
 app.get('/about', (req, res,)=>{
 	res.render('about', {title:"About"});
 })
+//SHORT VIDEOS FROM YOUTUBE
 app.get('/short_video', (req, res)=>{
 	Blogv.find().sort({createdAt: -1})
 	.then(result=>{
@@ -105,6 +135,7 @@ app.get('/short_video', (req, res)=>{
 		console.log(err)
 	})
 })
+// ADMIN PAGE TO UPLOAD SONGS 
 app.get('/admin', (req, res)=>{
 	res.render('admin', {title:"Admin"});
 	
@@ -187,46 +218,22 @@ app.post('/admin', upload.fields([{ name: "image" }, { name: "audio" }]), (req, 
 		})
 	}
   })
-  app.get('/top_song/:id', (req, res)=>{
-	const id = req.params.id;
-	Blogd.findById(id)
-	  .then(result=>{
-		res.render('detailsd', {blogd:result, title:'More'})
-	  })
-	  .catch(err=>{
-		console.log(err);
-		res.status(404).render('404', {title:'404'})
-	  });
-  }) 
+ 
   
-  app.get('/news_field/:id', (req, res)=>{
-	const id = req.params.id;
-	Blogn.findById(id)
-	  .then(result=>{
-			res.render('detailsn', {blogn:result, title:'More'})
-	  })
-	  .catch(err=>{
-		console.log(err);
-		res.status(404).render('404', {title:'404'})
-	  });
-  }) 
+ 
   
-  app.get('/:id', (req, res)=>{
+  app.get('/:id', async (req, res)=>{
 	const id = req.params.id;
-  
-	// check if this is a request for the favicon
-	if (req.url === '/favicon.ico') {
-	  return res.status(204).end();
+	try{
+		const result = await Blog.findById(id)
+		const news = await Blogn.find()
+		console.log(news[1].helder)
+		res.render('details', {blog:result, news, title:'More'})
 	}
-  
-	Blog.findById(id)
-	  .then(result=>{
-		res.render('details', {blog:result, title:'More'})
-	  })
-	  .catch(err=>{
-		console.log(err);
-		res.status(404).render('404', {title:'404'})
-	  });
+	catch(err){
+		console.log(err)
+	}
+	
   }) 
   
 app.get('/form', (req, res)=>{

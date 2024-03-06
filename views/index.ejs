@@ -20,7 +20,7 @@
 				<div class="image-display">
 					<% if(blogs.length>0){ %>
 					<%	blogs.forEach(blog=>{	%>
-							<p><img src="<%= blog.image %>" class="pix"/> <%= blog.artist_name %></p>
+							<p><a href="/<%=blog._id %>"><img src="<%= blog.image %>" class="pix"/> <%= blog.artist_name %></a></p>
 
 						<%})%>
 
