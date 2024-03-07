@@ -167,7 +167,7 @@ header{
 	padding: 5px;
 }
 .search-container label:hover{
-	background:blue;
+	background:rgb(169, 169, 239);
 }
 .search{
 	height:40px;
@@ -505,7 +505,7 @@ div h2, h1{
 	border-width:0px;
 }
 .form button{
-	background:blue;
+	background:rgb(169, 169, 239);;
 }
 .video_container{
 	
@@ -534,6 +534,7 @@ div h2, h1{
 	flex-direction: column;
 	align-items: center;
 	text-align: center;
+	margin-top:10px;
   }
 @media screen and (max-width:800px){
 	
@@ -567,7 +568,7 @@ div h2, h1{
 	height:40px;
 	width:180px;
 	border-radius:30px;
-	background:blue;
+	background:rgb(169, 169, 239);
 	right:0px;
 	bottom:2px;
 }
