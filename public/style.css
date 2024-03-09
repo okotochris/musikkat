@@ -695,3 +695,7 @@ div h2, h1, h3, h4{
 	text-align:center;
 	background:black
 }
+.news_click_more{
+	display:flex;
+	flex-direction:column;
+}
