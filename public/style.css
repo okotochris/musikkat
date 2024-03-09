@@ -307,7 +307,7 @@ div h2, h1{
 	margin:10px;
 	}
 .image-display{
-	position:absolute;
+	
 	width:auto;
 	height:auto;
 	display:flex;
@@ -320,6 +320,14 @@ div h2, h1{
 	position:relative;
 	color:white;
 	font-size:20px;
+	text-align:center;
+}
+.image-display-style{
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	align-items:center;
+	margin-right:10px;
 	text-align:center;
 }
 .song_list{
