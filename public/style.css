@@ -154,7 +154,7 @@ header{
 	display: flex;
   	align-items: center;
   	justify-content: center;
-	background:gold;
+	background:rgb(175, 184, 243);
 	color:rgb(255, 255, 255);
 	height:100px;
 	opacity:1;
@@ -316,7 +316,7 @@ div h2, h1{
 	box-shadow: 5px 5px 5px #777777;
 	overflow:hidden;
 }
-.image-display p{
+.image-display a{
 	position:relative;
 	color:white;
 	font-size:20px;
@@ -553,13 +553,7 @@ div h2, h1{
 		display:none;
 	  }
 }
-#sociallink{
-	background:yellow;
-	border-radius:20px;
-	display: flex;
-	width:300px;
-	height:45px;
-}
+
 .likes{
 	display:flex;
 	align-items:center;
