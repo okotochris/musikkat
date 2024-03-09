@@ -233,8 +233,8 @@ header{
 
 
 .news img, .dsong img{
-	height:180px;
-	width:160px;
+	height:200px;
+	width:190px;
 	float:left;
 	padding:10px;
 	
@@ -698,4 +698,5 @@ div h2, h1, h3, h4{
 .news_click_more{
 	display:flex;
 	flex-direction:column;
+	justify-content:center;
 }
