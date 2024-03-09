@@ -5,7 +5,7 @@
     <%- include('partials/header.ejs')%>
     <div style="background:url('./music design.jpg');" class="design_container">
         <h2  style="padding-top:20px;">download latest africa music</h2>
-        <p>follow and download your favourite Artist Song and stream songs online and lot more </p>
+        
         <div class="container" >
             <div class="search-container">
                 <input type="text" placeholder="Search for content" class="search"/><label>Search</label>
@@ -13,20 +13,18 @@
         </div>
     </div>
    <div class="download">
-    
-        <div class="song-container">
-               
+            <div class="song-container">        
             <div class="dsong">  
                     <% if(blogds.length>0){ %>
                         <%    blogds.forEach(blogd=>{  %>
                             
                             <img src="<%= blogd.image %>"/>
-                            <h3 style="color:gold"><%= blogd.artist_name %></h3>
-                            <div style="height:100px; position:relative; padding:5px; overflow:hidden;">
+                            <h4 style="color:gold"><%= blogd.artist_name %></h4>
+                            <div style="max-height:130px; position:relative; padding:5px; overflow:hidden;">
                                 <P> 
                                 <%= blogd.comment %>
                                 </P>
-                            </div><a href="./top_song/<%=blogd._id %>" style="color:blue;">see more.....</a>
+                            </div><a href="./top_song/<%=blogd._id %>" style="color:rgb(232, 232, 241);">see more.....</a>
                             <div class="dsong_box">
                                 <a href="<%= blogd.dlink %>" download><img src="download icon.png" style="height:25px; width:25px;" /></a>
                                 <audio controls loop> <source src="<%= blogd.plink %>"> </audio>

@@ -6,8 +6,8 @@
         <%- include('partials/header.ejs') %>
 
         <div style="background:url('./news headline.jpg');"  class="design_container">
-            <h1  style="padding-top:20px;">download latest africa music song</h1>
-            <p>follow and download your favourite Artist Song and stream songs online and lot more </p>
+            <h1  style="padding-top:20px;">get the latest treading news </h1>
+            <p>stay tune as we bring you the latest happening around the world </p>
             <div class="container" >
                 <div class="search-container">
                     <input type="text" placeholder="Search for content" class="search"/><label>Search</label>
@@ -22,9 +22,9 @@
                     <div style="position:relative; width:100%;">
                       <%  if(blogns.length > 0){ %>
                        <%     blogns.forEach(blogn=>{ %>
-                        <a href="./news_field/<%=blogn._id %>"> <h2><%= blogn.helder   %></h2>
+                        <a href="./news_field/<%=blogn._id %>"> <h3><%= blogn.helder   %></h3>
                                 <img src="<%= blogn.image %>" class="celebrity"/>   
-                                <div style="height:180px; overflow:hidden; color:white;">
+                                <div style="max-height:180px; overflow:hidden; color:white;">
                                     <p> <%= blogn.news %> </p>
                                 </div></a>
                                
