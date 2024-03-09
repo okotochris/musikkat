@@ -48,22 +48,23 @@ app.listen(PORT, (err)=>{
 	  const upload = multer({ storage: filestorage })
 //HOME PAGE FOR UPCOMING ARTIST
 app.get('/', (req, res)=>{
-	Blog.find().sort({createdAt:-1})
-	.then((result)=>{
-		res.render('index', {title:"Home", blogs:result});
-	})
-	.catch((err)=>{
-		console.log(err) 
-	})
-})
-// TOP NIGERIA AND FOREING MUSICIAN 
-app.get('/top_song', (req, res)=>{
 	Blogd.find().sort({createdAt:-1})
 	.then(result=>{
 		res.render('top_song', {title:'Top_Song', blogds: result})
 	})
 	.catch(err=>{
 		console.log(err)
+	})
+	
+})
+// TOP NIGERIA AND FOREING MUSICIAN 
+app.get('/top_song', (req, res)=>{
+	Blog.find().sort({createdAt:-1})
+	.then((result)=>{
+		res.render('index', {title:"Home", blogs:result});
+	})
+	.catch((err)=>{
+		console.log(err) 
 	})
 })
 app.get('/top_song/:id', async (req, res)=>{
