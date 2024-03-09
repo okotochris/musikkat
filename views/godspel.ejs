@@ -21,16 +21,19 @@
                         <%    bloggs.forEach(blogg=>{  %>
                             
                             <img src="<%= blogg.image %>"/>
+                        <div class="news_click_more">
+                            <a href="./godspel/<%=blogg._id %>" style="color:white;">
                             <h3 style="color:gold"><%= blogg.artist_name %></h3>
-                            <div style="height:100px; position:relative; padding:5px; overflow:hidden;">
+                            <div style="max-height:100px; position:relative; padding:5px; overflow:hidden;">
                                 <P> 
                                 <%= blogg.comment %>
                                 </P>
-                            </div><a href="./godspel/<%=blogg._id %>" style="color:blue;">see more.....</a>
+                            </div>see more.....</a>
                             <div class="dsong_box">
                                 <a href="<%= blogg.dlink %>" download><img src="download icon.png" style="height:25px; width:25px;" /></a>
                                 <audio controls loop> <source src="<%= blogg.plink %>"> </audio>
                             </div> 
+                        </div>
                         <div class="clear_float"></div>
                         <hr/>
                         <%   })  %>

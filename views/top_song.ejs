@@ -20,12 +20,14 @@
                             
                             <img src="<%= blogd.image %>"/>
                         <div class="news_click_more">
+                        <a href="./top_song/<%=blogd._id %>" style="color:rgb(232, 232, 241);">
                             <h4 style="color:gold"><%= blogd.artist_name %></h4>
                             <div style="max-height:130px; position:relative; overflow:hidden;">
                                 <P> 
                                 <%= blogd.comment %>
                                 </P>
-                            </div><a href="./top_song/<%=blogd._id %>" style="color:rgb(232, 232, 241);">see more.....</a>
+                            </div>see more.....
+                        </a>
                             <div class="dsong_box">
                                 <a href="<%= blogd.dlink %>" download><img src="download icon.png" style="height:25px; width:25px;" /></a>
                                 <audio controls loop> <source src="<%= blogd.plink %>"> </audio>
