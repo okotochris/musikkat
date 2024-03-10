@@ -71,7 +71,7 @@ app.get('/top_song/:id', async (req, res)=>{
 	const id = req.params.id;
 	try{
 		const result = await Blogd.findById(id)
-		const top_songs = await Blogd.find()
+		const top_songs = await Blog.find()
 		res.render('detailsd', {blogd:result, blogs: top_songs, title:'More'})
 	}
 	catch(err){
@@ -114,7 +114,7 @@ app.get('/news_field/:id', async (req, res)=>{
 	const id = req.params.id;
 	try{
 		const result = await Blogn.findById(id)
-		const upComming = await Blog.find()
+		const upComming = await Blogd.find()
 		res.render('detailsn', {blogn:result, blogs:upComming, title:'More'})
 	}
 	catch(err){
@@ -227,7 +227,7 @@ app.post('/admin', upload.fields([{ name: "image" }, { name: "audio" }]), (req, 
 	const id = req.params.id;
 	try{
 		const result = await Blog.findById(id)
-		const news = await Blogn.find()
+		const news = await Blog.find()
 		console.log(news[1].helder)
 		res.render('details', {blog:result, news, title:'More'})
 	}

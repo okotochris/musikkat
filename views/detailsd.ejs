@@ -41,8 +41,9 @@
             <a href="/"><img src="../entertainment.png" height="40px" width="30px"/>HOME</a> 
             <a href="../news_field"><img src="../news.png" height="40px" width="30px"/>CELEBRITY NEWS</a> 
             <a href="../top_song"><img src="../music.png" height="40px" width="30px"/>TOP SONGS</a>
+            <a href="godspel"><img src="godspel_logo.png" height="40px" width="30px"/>Godspel</a>
             <a href="../short_video"><img src="../video.png" height="40px" width="30px"/>Short_Videos</a> 
-            <a href="../about"><img src="../about.png" height="40px" width="30px"/>ABOUT</a> 
+            
     
             
         </div>
@@ -103,14 +104,14 @@
     <div class="page_advert">
         
         <% if (blogs.length > 0) { %>
-            <% for (let i = 0; i < 4; i++) { %>
+            <% for (let i = 0; i < Math.min(4, blogs.length); i++) { %>
                 <a href="/top_song">
                     <div class="page_advert_details">
                             <p><%= blogs[i].artist_name %></p>
                             <%= blogs[i].title %>
                             <img src="../<%= blogs[i].image %>" type="image/jpeg" alt="image"/>
-                            <a>download</a>
-                            <div><%= blogs[i].comment %> </div>
+                            <a>download...</a>
+                            <div><%= blogs[i].header %> </div>
                     </div>
                 </a>
                
