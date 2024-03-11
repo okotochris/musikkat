@@ -71,7 +71,7 @@ app.get('/top_song/:id', async (req, res)=>{
 	const id = req.params.id;
 	try{
 		const result = await Blogd.findById(id)
-		const top_songs = await Blog.find()
+		const top_songs = await Blog.find().sort({createdAt:-1})
 		res.render('detailsd', {blogd:result, blogs: top_songs, title:'More'})
 	}
 	catch(err){
@@ -102,7 +102,7 @@ app.get('/godspel/:id', async (req, res)=>{
   }) 
 // NEWS FIELD
 app.get('/news_field', (req, res)=>{
-	Blogn.find().sort({createdAt:-1})
+	Blogn.find().sort({createdArt:-1})
 	.then(result=>{
 		res.render('news_field', {title: "News_field", blogns: result})
 	})
@@ -127,15 +127,16 @@ app.get('/about', (req, res,)=>{
 	res.render('about', {title:"About"});
 })
 //SHORT VIDEOS FROM YOUTUBE
-app.get('/short_video', (req, res)=>{
-	Blogv.find().sort({createdAt: -1})
-	.then(result=>{
-		res.render('short_video', {title: "Short_Video",  blogvs:result})
-	})
-	.catch(err=>{
-		console.log(err)
-	})
-})
+app.get('/short_video', async (req, res) => {
+	try {
+	  const result = await Blogv.find().sort({ createdAt: -1 });
+	  console.log(result); // Log the result to inspect the data
+	  res.render('short_video', { title: "Short_Video", blogvs: result });
+	} catch (err) {
+	  console.error(err);
+	}
+  });  
+  
 // ADMIN PAGE TO UPLOAD SONGS 
 app.get('/admin', (req, res)=>{
 	res.render('admin', {title:"Admin"});
