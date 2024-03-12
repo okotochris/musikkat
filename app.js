@@ -131,7 +131,6 @@ app.get('/about', (req, res,)=>{
 app.get('/short_video', async (req, res) => {
 	try {
 	  const result = await Blogv.find().sort({ createdAt: -1 });
-	  console.log(result); // Log the result to inspect the data
 	  res.render('short_video', { title: "Short_Video", blogvs: result });
 	} catch (err) {
 	  console.error(err);

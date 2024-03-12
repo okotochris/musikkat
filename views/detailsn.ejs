@@ -1,60 +1,11 @@
-<html>
-    <!DOCTYPE html>
-    <head>
-	
-        <meta charset="utf-8"/>
-        <link rel="stylesheet" href="../style.css"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title> Musikkat || <%= title %></title>			
-    </head>
+<!DOCTYPE html>
+<html> 
+
+    <%- include('partials/more_head.ejs')%>
 
 <body>
     
-    <header>
-        <div class="header" id="home">
-        <div>
-
-                <h2>MUSIKKAT</h2>
-                <!-- mobile phone links -->
-                <div class="menu" id="menu" >
-                </div>
-                    
-        </div>
-    
-        
-        <div id="links">
-                <a href="/"><img src="../entertainment.png" height="40px" width="30px"/>HOME</a> 
-                <a href="../news_field"><img src="../news.png" height="40px" width="30px"/>NEWS</a> 
-                <a href="../top_song"><img src="../music.png" height="40px" width="30px"/>SONGS</a> 
-                <a href="../short_video"><img src="../video.png" height="40px" width="30px"/>VIDEO</a> 
-                <a href="../about"><img src="../about.png" height="40px" width="30px"/>ABOUT</a> 
-        </div>
-               
-    
-        <div class="mode">
-                <div class="dark"></div>
-                <div class="white"></div>
-        </div>
-            
-        <div id="links_mobile">
-            <a href="/"><img src="../entertainment.png" height="40px" width="30px"/>HOME</a> 
-            <a href="../news_field"><img src="../news.png" height="40px" width="30px"/>CELEBRITY NEWS</a> 
-            <a href="../top_song"><img src="../music.png" height="40px" width="30px"/>TOP SONGS</a>
-            <a href="../short_video"><img src="../video.png" height="40px" width="30px"/>Short_Videos</a> 
-            <a href="../about"><img src="../about.png" height="40px" width="30px"/>ABOUT</a> 
-    
-        </div>
-        <div id="advert">
-            <a href="/"><img src="../entertainment.png" /></a>
-            <a href="../news_field"><img src="../news.png" /> </a>
-            <a href="../top_song"><img src="../music1.png" /></a>
-            <a href="../short_video"><img src="../video.png" /></a>
-            <img src="../music_dance.png" />
-        </div>
-        
-      
-      <script sur="../main.js"></script>
-    </header>
+     <%- include('partials/more_header.ejs')%>
     
     
 
@@ -85,33 +36,19 @@
         </div>
 
     </div>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8809630259604795"
-    crossorigin="anonymous"></script>
-<!-- simplifying the web -->
-<ins class="adsbygoogle"
-    style="display:block"
-    data-ad-client="ca-pub-8809630259604795"
-    data-ad-slot="8600459374"
-    data-ad-format="auto"
-    data-full-width-responsive="true"></ins>
-<script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8809630259604795" crossorigin="anonymous"></script>
+     <!-- simplifying the web -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-8809630259604795"
+        data-ad-slot="8600459374"
+        data-ad-format="auto"
+        data-full-width-responsive="true">
+    </ins>
+    <script>
     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-<!-- simplifying the web -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-8809630259604795"
-     data-ad-slot="8600459374"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-    <div class="more_songs">
-        <p>download more songs </p>
-        <p>Stream and download mor of your favourite songs </p>
-    </div>
-    
+    </script>
+
     <div class="page_advert">
     <!--getting top_song from databas and displaying it in see more of news field-->    
         <% if (blogs.length > 0) { %>
