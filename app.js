@@ -114,8 +114,9 @@ app.get('/news_field/:id', async (req, res)=>{
 	const id = req.params.id;
 	try{
 		const result = await Blogn.findById(id)
-		const upComming = await Blogd.find()
-		res.render('detailsn', {blogn:result, blogs:upComming, title:'More'})
+	// get top song from database
+		const top_song = await Blogd.find()
+		res.render('detailsn', {blogn:result, blogs:top_song, title:'More'})
 	}
 	catch(err){
 		console.log(err)

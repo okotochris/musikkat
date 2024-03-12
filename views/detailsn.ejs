@@ -91,9 +91,9 @@
     </div>
     
     <div class="page_advert">
-        
+    <!--getting top_song from databas and displaying it in see more of news field-->    
         <% if (blogs.length > 0) { %>
-            <% for (let i = 0; i < 4; i++) { %>
+            <% for (let i = 0; i < Math.min(4, blogs.length); i++) { %>
                 <a href="/">
                     <div class="page_advert_details">
                             <%= blogs[i].artist_name %>
