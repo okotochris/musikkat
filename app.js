@@ -102,7 +102,7 @@ app.get('/godspel/:id', async (req, res)=>{
   }) 
 // NEWS FIELD
 app.get('/news_field', (req, res)=>{
-	Blogn.find().sort({createdArt:-1})
+	Blogn.find().sort({createdAt:-1})
 	.then(result=>{
 		res.render('news_field', {title: "News_field", blogns: result})
 	})
