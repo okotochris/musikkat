@@ -28,22 +28,22 @@
    <div class="download">
             <div class="song-container">        
             <div class="dsong">  
-                    <% if(blogds.length>0){ %>
-                        <%    blogds.forEach(blogd=>{  %>
+                    <% if(blogs.length>0){ %>
+                        <%    blogs.forEach(blog=>{  %>
                             
-                            <img src="<%= blogd.image %>"/>
+                            <img src="<%= blog.image %>"/>
                         <div class="news_click_more">
-                        <a href="./top_song/<%=blogd._id %>" style="color:rgb(232, 232, 241);">
-                            <h3><%= blogd.artist_name %></h3>
+                        <a href="./top_song/<%=blog._id %>" style="color:rgb(232, 232, 241);">
+                            <h3><%= blog.artist_name %></h3>
                             <div style="max-height:130px; position:relative; overflow:hidden;">
                                 <P> 
-                                <%= blogd.comment %>
+                                <%= blog.comment %>
                                 </P>
                             </div>see more.....
                         </a>
                             <div class="dsong_box">
-                                <a href="<%= blogd.dlink %>" download><img src="download icon.png" style="height:25px; width:25px;" /></a>
-                                <audio controls loop> <source src="<%= blogd.plink %>"> </audio>
+                                <a href="<%= blog.dlink %>" download><img src="download icon.png" style="height:25px; width:25px;" /></a>
+                                <audio controls loop> <source src="<%= blog.plink %>"> </audio>
                             </div> 
                         </div>
                         <div class="clear_float"></div>

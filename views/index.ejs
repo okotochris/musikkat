@@ -17,28 +17,52 @@
         </div>
 			<div class="image-container">
 				<div class="image-display">
-					<% if(blogs.length>0){ %>
-					<%	blogs.forEach(blog=>{	%>
-						<div class="image-display-style">
-							<div>
-								<a href="/<%=blog._id %>"><img src="<%= blog.image %>" class="pix"/></a> 
+					<% if (music.length > 0) { %>
+						<% for (let i = 0; i < Math.min(4, music.length); i++) { %>
+							<div class="image-display-style">
+								<div>
+									<a href="/<%= music[i]._id %>"><img src="<%= music[i].image %>" class="pix"/></a> 
+								</div>
+								<div>
+									<a href="/<%= music[i]._id %>"><%= music[i].artist_name %></a>
+								</div>
 							</div>
-							<div>
-								<a href="/<%=blog._id %>"><%= blog.artist_name %> </a>
-							</div>
-						</div>
-
-						<%})%>
-
-					<% }else{  %>
-							<h2>NO NETWORK REFRESH!!!!!</h2>
-						
-
+						<% } %>
+					<% } else { %>
+						<h2> Calculating.....</h2>
 					<% } %>
-				
+					
 				</div>
 			
+		</div> 
+		<!--container for all content --->
+		<div class="extra_info">
+			<!--VIDEO DISPLAY ON HOME FIELD-->
+			<div class="extra_video">
+				<% if (video.length > 0) { %>
+					<% for (let i = 0; i < Math.min(4, video.length); i++) { %>
+						
+						<div>
+							<h3><%= news.helder   %></h3>
+							<div><iframe src="<%= video[i].link %>" allowfullscreen></iframe></div>
+						</div>
+                        
+
+					<% } %>
+				<% } else { %>
+					<h2>no content to display</h2>
+				<% } %>
+			</div>
+
+
+			<div class="extra_news">
+				<h3><%= news[0].helder %></h3>
+				<img src="<%= news[0].image %>" alt="news_image" /> 
+				<p><%= news[0].news %></p>
+			</div>
+
 		</div>
+		<!-- not diplaying now -->
 		<div class="form">
 			<form method="post" action="" >
 				<p><input type="text" placeholder="Enter your request" name="cleint req" required/></p>

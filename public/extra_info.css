@@ -1,0 +1,28 @@
+.extra_info{
+    display:flex;
+    flex-direction:column;
+    height:auto;
+}
+.extra_video{
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+    height:auto;
+}
+.extra_video div{
+    width:100%;
+    overflow:hidden;
+}
+.extra_news{
+    margin:15px auto;
+    width:70%;
+}
+@media only screen and (max-width:700px){
+    .extra_news{
+        margin:15px auto;
+        width:98%;
+    }
+    .extra_news img{
+        width:90%;
+    }
+}

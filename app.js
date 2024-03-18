@@ -46,26 +46,31 @@ app.listen(PORT, (err)=>{
 	  })
 	  
 	  const upload = multer({ storage: filestorage })
+
 //HOME PAGE FOR UPCOMING ARTIST
-app.get('/', (req, res)=>{
-	Blogd.find().sort({createdAt:-1})
-	.then(result=>{
-		res.render('top_song', {title:'Top_Song', blogds: result})
-	})
-	.catch(err=>{
+app.get('/', async (req, res)=>{
+	try{
+		const result = await Blog.find().sort({createdAt:-1})
+		const music = await Blogd.find().sort({createdAt:-1})
+		const news = await Blogn.find().sort({ createdAt: -1 });
+		const video = await Blogv.find().sort({ createdAt: -1 });
+		res.render('index', {title:'Home', blogs: result, news, music, video})
+	}
+	catch(err){
 		console.log(err)
-	})
-	
+	}
 })
+
 // TOP NIGERIA AND FOREING MUSICIAN 
-app.get('/top_song', (req, res)=>{
-	Blog.find().sort({createdAt:-1})
-	.then((result)=>{
-		res.render('index', {title:"Home", blogs:result});
-	})
-	.catch((err)=>{
-		console.log(err) 
-	})
+app.get('/top_song', async (req, res)=>{
+	try{
+		const result = await Blogd.find().sort({createdAt:-1})
+		
+		res.render('top_song', {title:"Music", blogs:result});
+	}
+	catch(err){
+		console.log(err)
+	}
 })
 app.get('/top_song/:id', async (req, res)=>{
 	const id = req.params.id;
@@ -101,19 +106,22 @@ app.get('/godspel/:id', async (req, res)=>{
 	
   }) 
 // NEWS FIELD
-app.get('/news_field', (req, res)=>{
-	Blogn.find().sort({createdAt:-1})
-	.then(result=>{
-		res.render('news_field', {title: "News_field", blogns: result})
-	})
-	.catch(err=>{
-		console.log(err);
-	})
-})
+app.get('/news_field', async (req, res) => {
+	try {
+	  const result = await Blogn.find().sort({ createdAt: -1 });
+	  res.render('news_field', { title: "News_field", blogns: result });
+	} catch (err) {
+	  console.log(err);
+	  res.status(500).send('Internal Server Error');
+	}
+  });
+  
+  
 app.get('/news_field/:id', async (req, res)=>{
 	const id = req.params.id;
 	try{
 		const result = await Blogn.findById(id)
+		
 	// get top song from database
 		const top_song = await Blogd.find()
 		res.render('detailsn', {blogn:result, blogs:top_song, title:'More'})
