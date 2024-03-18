@@ -21,8 +21,16 @@
     .extra_news{
         margin:15px auto;
         width:98%;
+        margin:5px auto;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
     }
     .extra_news img{
         width:90%;
+        margin:0px auto;
     }
+}
+.field_into{
+    margin-top:10px;
 }

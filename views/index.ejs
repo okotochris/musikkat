@@ -15,7 +15,10 @@
                 </div>	
             </div>
         </div>
+
+		<!--TOP MUSIC DISPLAY AT HOME PAGE-->
 			<div class="image-container">
+				<p class="field_into">LASTEST AFRICA MUSICS</p>
 				<div class="image-display">
 					<% if (music.length > 0) { %>
 						<% for (let i = 0; i < Math.min(4, music.length); i++) { %>
@@ -38,6 +41,7 @@
 		<!--container for all content --->
 		<div class="extra_info">
 			<!--VIDEO DISPLAY ON HOME FIELD-->
+			<p class="field_into"> SHORT SEXY VIDEOS </p>
 			<div class="extra_video">
 				<% if (video.length > 0) { %>
 					<% for (let i = 0; i < Math.min(4, video.length); i++) { %>
@@ -55,6 +59,7 @@
 			</div>
 
 
+			<p class="field_into">LAST NEW RECOMMENDED FOR YOU</p>
 			<div class="extra_news">
 				<h3><%= news[0].helder %></h3>
 				<img src="<%= news[0].image %>" alt="news_image" /> 
