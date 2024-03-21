@@ -17,8 +17,8 @@
         </div>
 
 		<!--TOP MUSIC DISPLAY AT HOME PAGE-->
+		<p class="field_into">LASTEST AFRICA MUSICS</p>
 			<div class="image-container">
-				<p class="field_into">LASTEST AFRICA MUSICS</p>
 				<div class="image-display">
 					<% if (music.length > 0) { %>
 						<% for (let i = 0; i < Math.min(4, music.length); i++) { %>
@@ -40,24 +40,37 @@
 		</div> 
 		<!--container for all content --->
 		<div class="extra_info">
-			<!--VIDEO DISPLAY ON HOME FIELD-->
+			<!--VIDEO DISPLAY ON HOME FIELD
 			<p class="field_into"> SHORT SEXY VIDEOS </p>
+			
+			<div class="single_video"> 
+				<h4><%= video[5].content%></h4>
+				<iframe src="<%= video[5].link %>"></iframe>
+			</div>
+			-->
+			<a href="/short_video">
+				<p>more videos....</p>
+			</a>
 			<div class="extra_video">
 				<% if (video.length > 0) { %>
 					<% for (let i = 0; i < Math.min(4, video.length); i++) { %>
-						
-						<div>
-							<h3><%= news.helder   %></h3>
-							<div><iframe src="<%= video[i].link %>" allowfullscreen></iframe></div>
-						</div>
-                        
-
+						<a href="/short_video">
+							<div class="video_container">
+								<iframe class="video_iframe" src="<%= video[i].link %>" allowfullscreen></iframe>
+							</div>
+						</a>
 					<% } %>
-				<% } else { %>
-					<h2>no content to display</h2>
+					<div class="seemore">
+						<a href="/short_video">
+							more videos...
+						</a>
+					</div>
+				<% }else{ %>
+					<h3>No content to display</h3>
 				<% } %>
 			</div>
-
+			
+			
 
 			<p class="field_into">LAST NEW RECOMMENDED FOR YOU</p>
 			<div class="extra_news">
