@@ -57,6 +57,8 @@
         height:315px;
         margin-top:10px;
         border:none;
+        border:solid black 1px; 
+        margin-left:3px;
      }
 }
 .field_into{
