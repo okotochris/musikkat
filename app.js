@@ -16,6 +16,7 @@ mongoose.connect(dbUI)
 .catch(err=>{
 	console.log(err);
 })
+mongoose.set('strictQuery', true)
 const app= express();
 // PORT CONNECTION
 
@@ -235,9 +236,8 @@ app.post('/admin', upload.fields([{ name: "image" }, { name: "audio" }]), (req, 
   app.get('/:id', async (req, res)=>{
 	const id = req.params.id;
 	try{
-		const result = await Blog.findById(id)
+		const result = await Blogd.findById(id)
 		const news = await Blog.find()
-		console.log(news[1].helder)
 		res.render('details', {blog:result, news, title:'More'})
 	}
 	catch(err){

@@ -21,7 +21,7 @@
 			<div class="image-container">
 				<div class="image-display">
 					<% if (music.length > 0) { %>
-						<% for (let i = 0; i < Math.min(15, music.length); i++) { %>
+						<% for (let i = 0; i < Math.min(151, music.length); i++) { %>
 							<div class="image-display-style">
 								<div>
 									<a href="/<%= music[i]._id %>"><img src="<%= music[i].image %>" class="pix"/></a> 
@@ -54,11 +54,19 @@
 			<div class="extra_video">
 				<% if (video.length > 0) { %>
 					<% for (let i = 0; i < Math.min(4, video.length); i++) { %>
-						<a href="/short_video">
-							<div class="video_container">
-								<iframe class="video_iframe" src="<%= video[i].link %>" allowfullscreen></iframe>
-							</div>
-						</a>
+					<%	if(i == 0){ %>
+							<a href="/short_video">
+								<div class="video_container">
+									<iframe class="video_iframe" src="<%= video[i].link%>?autoplay=1&rel=0" autoplay allowfullscreen allow="autoplay"></iframe>
+								</div>
+							</a>
+					<%	}else{ %>
+							<a href="/short_video">
+								<div class="video_container">
+									<iframe class="video_iframe" src="<%= video[i].link%>&rel=0" allowfullscreen></iframe>
+								</div>
+							</a>
+					<%	} %>
 					<% } %>
 					<div class="seemore">
 						<a href="/short_video">
