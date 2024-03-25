@@ -46,13 +46,13 @@
     
     <div class="page_advert">
         
-        <% if (news.length > 0) { %>
-            <% for (let i = 0; i < Math.min(5, news.length); i++) { %>
+        <% if (music.length > 0) { %>
+            <% for (let i = 0; i < Math.min(4, music.length); i++) { %>
                 <a href="/news_field">
                     <div class="page_advert_details">
-                        <%= news[i].artist_name %>
-                        <img src="../<%= news[i].image %>" type="image/jpeg" alt="image"/>
-                        <div><%= news[i].header %></div>
+                        <%= music[i].artist_name %>
+                        <img src="../<%= music[i].image %>" type="image/jpeg" alt="image"/>
+                        <div><%= music[i].comment %></div>
                     </div>
                 </a>
             <% } %>

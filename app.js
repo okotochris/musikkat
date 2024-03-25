@@ -233,25 +233,32 @@ app.post('/admin', upload.fields([{ name: "image" }, { name: "audio" }]), (req, 
   
  
   
-  app.get('/:id', async (req, res)=>{
-	const id = req.params.id;
-	try{
-		const top_songs = await Blogd.find().sort({createdAt:-1})
-		const result = await Blogd.findById(id)
-		if(result.dlink){
-			res.render('detailsd', {blogd:result, blogs: top_songs, title:'More'})
-		}
-		else{
-			res.render('details', {blog:result, news, title:'More'})
-		}
-		
-		
-	}
-	catch(err){
-		console.log(err)
-	}
-	
-  }) 
+  app.get('/:id', async (req, res) => {
+    const id = req.params.id;
+    try {
+        let top_songs = await Blogd.find().sort({ createdAt: -1 });
+        let result = await Blogd.findById(id);
+        
+        if (result !== null && result !== undefined) {
+            // If the document exists in Blogd
+            res.render('detailsd', { blogd: result, blogs: top_songs, title: 'More' });
+        } else {
+            // If the document doesn't exist in Blogd, check Blog
+            result = await Blog.findById(id);
+            if (result !== null && result !== undefined) {
+                // If the document exists in Blog
+                res.render('details', { blog: result, music:top_songs, title: 'More' });
+            } else {
+                // If the document doesn't exist in Blog as well, render with null blog
+                res.render('details', { blog: null, blogs: top_songs, title: 'More' });
+            }
+        }
+    } catch (err) {
+        console.log(err);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
   
 app.get('/form', (req, res)=>{
 	res.render('form');
