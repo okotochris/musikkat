@@ -236,9 +236,16 @@ app.post('/admin', upload.fields([{ name: "image" }, { name: "audio" }]), (req, 
   app.get('/:id', async (req, res)=>{
 	const id = req.params.id;
 	try{
+		const top_songs = await Blogd.find().sort({createdAt:-1})
 		const result = await Blogd.findById(id)
-		const news = await Blog.find()
-		res.render('details', {blog:result, news, title:'More'})
+		if(result.dlink){
+			res.render('detailsd', {blogd:result, blogs: top_songs, title:'More'})
+		}
+		else{
+			res.render('details', {blog:result, news, title:'More'})
+		}
+		
+		
 	}
 	catch(err){
 		console.log(err)
