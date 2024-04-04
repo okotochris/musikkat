@@ -584,9 +584,12 @@ div h2, h1, h3, h4{
 	bottom:2px;
 }
 /* details page */
-.details_container, .page_advert{
-	text-align:center;
+.details_container{
 	position:relative;
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	align-items:center;
 }
 .details_container img, .details_container p{
 	padding:20px;
@@ -609,10 +612,8 @@ div h2, h1, h3, h4{
 	flex-direction:column;
 	justify-content:center;
 	align-items:center;
-	border-bottom:solid yellow 2px;
 	margin-top:10px;
 	padding:10px;
-	text-align:left;
 }
 .page_advert_details img{
 	height:180px;
@@ -652,6 +653,13 @@ div h2, h1, h3, h4{
 	width:70%;
 	background:rgb(80, 76, 76);
 	margin:0px auto;
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	align-items:center;
+}
+.details p{
+	font-family:poppins;
 }
 .details .lyrics, .details .about{
 	

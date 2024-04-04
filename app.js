@@ -99,7 +99,7 @@ app.get('/godspel/:id', async (req, res)=>{
 		const top_song = await Blogd.find()
 		console.log(top_song.image)
 		//const godspelsong = promise.json()
-		res.render('detailsg', {blogg: godspelsong, blogs:top_song, title: 'more'})
+		res.render('detailsg', {blogg: godspelsong, blogs:top_song, title: 'godspelsong.artist_name'})
 	}
 	catch(err){
 		console.log(err)
@@ -125,7 +125,7 @@ app.get('/news_field/:id', async (req, res)=>{
 		
 	// get top song from database
 		const top_song = await Blogd.find()
-		res.render('detailsn', {blogn:result, blogs:top_song, title:'More'})
+		res.render('detailsn', {blogn:result, blogs:top_song, title:result.helder})
 	}
 	catch(err){
 		console.log(err)
@@ -199,6 +199,7 @@ app.post('/admin', upload.fields([{ name: "image" }, { name: "audio" }]), (req, 
 	  const blogn = new Blogn({
 		helder: req.body.helder,
 		news: req.body.news,
+		news1: req.body.news1,
 		image: req.files["image"][0].filename
 	  })
 	  blogn.save()

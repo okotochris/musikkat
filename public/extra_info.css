@@ -18,6 +18,10 @@
 .extra_news{
     margin:15px auto;
     width:70%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
 }
 .single_video{
     width:90%;

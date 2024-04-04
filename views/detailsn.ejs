@@ -22,12 +22,13 @@
             <img src="../<%= blogn.image %>" style="height:420px; width:320px;" />
             <div class="about">
                 <p>  <%= blogn.news %></p>
+                <p>  <%= blogn.news1 %></p>
             </div>
             
                <p style="color:yellow;">feel the heat with musikkat! stay tune and we bring the world of entertainment to you </p>
             follow us on our social media platform 
             <div id="details_link">
-                <a href="http://facebook.com/okoto.chris"><img src="../Facebook.jpg"  /></a> 
+                <a href="https://web.facebook.com/profile.php?id=100086470384210"><img src="../Facebook.jpg"  /></a> 
                 <a href="http://wa.me/09157303724"> <img src="../Whatsapp.png"/></a> 
                 <a href=""><img src="../tiktok.png"/></a>
                 <a href=""> <img src="../Instagram.jfif"/> </a>
@@ -53,7 +54,7 @@
     <!--getting top_song from databas and displaying it in see more of news field-->    
         <% if (blogs.length > 0) { %>
             <% for (let i = 0; i < Math.min(4, blogs.length); i++) { %>
-                <a href="/">
+                <a href="/top_song">
                     <div class="page_advert_details">
                             <%= blogs[i].artist_name %>
                             <%= blogs[i].title %>

@@ -10,6 +10,10 @@ const Blog= new schema({
         type: String,
         require: true
     },
+    news1:{
+        type: String,
+        require: true
+    },
     image:{
         type: String, 
         require: true
