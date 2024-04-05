@@ -29,13 +29,15 @@
                         <div class="news_click_more">
                                 <div style="max-height:180px; overflow:hidden; color:white;">
                                     <a href="./news_field/<%=blogn._id %>" style="color:white">  <p> <%= blogn.news %> </p></a>
+                                    <p style="font-size:14px; margin-top:10px; color:rgb(201, 201, 201)">Date uploaded: <%= blogn.createdAt.toLocaleDateString() %></p>
                                 </div>
                        
-                               
+                               <!--
                                 <div class="likes">
                                     <span style="height:auto; width:auto; padding:0px 0px 0px 2px;">333</span><img src="like.png" style="height:25px; width:25px"/>
                                     <span style="height:auto; width:auto; padding:0px 0px 0px 2px;">3k</span><img src="dislike.png" style="height:25px; width:25px"/>
                                 </div>
+                                -->
                         </div>
                                 <div class="clear_float"  ></div>
                            
