@@ -78,7 +78,7 @@ app.get('/top_song/:id', async (req, res)=>{
 	try{
 		const result = await Blogd.findById(id)
 		const top_songs = await Blog.find().sort({createdAt:-1})
-		res.render('detailsd', {blogd:result, blogs: top_songs, title:'More'})
+		res.render('detailsd', {blogd:result, blogs: top_songs, title:result.artist_name})
 	}
 	catch(err){
 		console.log(err)

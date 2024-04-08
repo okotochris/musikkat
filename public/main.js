@@ -3,7 +3,7 @@ let links_mobile= document.getElementById('links_mobile');
 let y=1;
 	menu.onclick= function(){
 		if(y==1){
-				menu.style.background= "url('../menu2.png')"
+				menu.style.background= "url('../../menu2.png')"
 				links_mobile.style.display= 'block';
 				y=2;
 				console.log('hello word')
