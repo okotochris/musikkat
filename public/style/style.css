@@ -347,7 +347,7 @@ div h2, h1, h3, h4{
 	background:url('pix/background.png');
 	background-repeat:no-repeat;
 	cursor:pointer;
-	font-size:15px;
+	font-size:12px;
 	
 	
 }
@@ -407,8 +407,8 @@ div h2, h1, h3, h4{
 }
 #fside{
 	width:100%;
-	position:absolute;
-	margin:5px 0px;
+	position:relative;
+	margin:20px 0px;
 	text-align:center;
 	background:grey;
 }
@@ -501,29 +501,8 @@ div h2, h1, h3, h4{
 	color:black;
 }
 
-.form{
-	width:350px;
-	height:250px;
-	border-radius:0px;
-	background:yellow;
-	position:fixed;
-	left:480px;
-	top:250px;
-	z-index:200;
-	text-align:center;
-	padding:5px;
-	display:none;
-}
-.form input, .form button{
-	width:350px;
-	height:45px;
-	margin:3px;
-	border-radius:10px;
-	border-width:0px;
-}
-.form button{
-	background:rgb(169, 169, 239);;
-}
+
+
 .video_container{
 	
 	width:90%;
