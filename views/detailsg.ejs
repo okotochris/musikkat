@@ -1,0 +1,97 @@
+<html>
+    <!DOCTYPE html>
+    <%- include('partials/more_head.ejs')%>
+
+<body>
+    
+    <%- include('partials/more_header.ejs')%>
+    
+
+    <div style="padding-top:100px;"></div>
+   
+    <div class="details_container">
+        <div>
+            <img src="../musikkat.png" style="height:100px; width:150px"/>
+        </div>
+        <div class="details">
+            <h2><%= blogg.artist_name %></h2>
+            <div class="about">
+                <p>  <%= blogg.comment %></p>
+            </div>
+            <img src="../<%= blogg.image %>" style="height:420px; width:350px;" />
+            <div class="lyrics">
+                <p>
+                    <%= blogg.lyrics %>  
+                
+                </p>
+            </div>
+            <div class="details-audio">
+                <a href="<%= blogg.dlink %> " download><img src="../download icon.png" style="height:25px; width:25px;" /></a>
+                <audio controls loop> <source src="<%= blogg.plink %>"/> </audio>
+            </div> 
+
+            <p style="color:yellow;">feel the heat with musikkat! stay tune as we bring the world of entertainment to you </p>
+            follow us on our social media platform 
+            <div id="details_link">
+                <a href="https://web.facebook.com/profile.php?id=100086470384210"><img src="../Facebook.jpg"  /></a> 
+                <a href="http://wa.me/09157303724"> <img src="../Whatsapp.png"/></a> 
+                <a href=""><img src="../tiktok.png"/></a>
+                <a href=""> <img src="../Instagram.jfif"/> </a>
+            </div>
+        </div>
+
+    </div>
+    <div class="more_songs">
+        <p>download more songs </p>
+        <p>Stream and download mor of your favourite songs </p>
+    </div>
+    
+    <div class="page_advert">
+        
+        <% if (blogs.length > 0) { %>
+            <% for (let i = 0; i < 4; i++) { %>
+                <a href="/top_song">
+                    <div class="page_advert_details">
+                            <%= blogs[i].artist_name %>
+                            <%= blogs[i].title %>
+                            <img src="../<%= blogs[i].image %>" type="image/jpeg" alt="image"/>
+                            <p>download</p>
+                            <div><%= blogs[i].comment %> </div>
+                    </div>
+                </a>
+               
+            <% } %>
+        <% } else { %>
+            <h2>no content to display</h2>
+        <% } %>
+        
+    </div>
+    <footer style="height:50px; width:100px; margin:0px auto; color:yellow;">
+        <p>&copy; Musikkat</p>
+    </footer>
+
+    <script src="../main.js"></script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

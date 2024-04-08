@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html> 
+
+    <%- include('partials/more_head.ejs')%>
+
+<body>
+    
+     <%- include('partials/more_header.ejs')%>
+    
+    
+
+    <div style="padding-top:100px;"></div>
+   
+    <div class="details_container">
+        <div>
+            <img src="../musikkat.png" style="height:100px; width:150px"/>
+        </div>
+        <div class="details">
+            <div >
+            <h2><%= blogn.helder %></h2>
+            </div>
+            <img src="../<%= blogn.image %>" style="height:420px; width:360px;" />
+            <div class="about">
+                <p>  <%= blogn.news %></p>
+                <p>  <%= blogn.news1 %></p>
+            </div>
+            
+               <p style="color:yellow;">feel the heat with musikkat! stay tune and we bring the world of entertainment to you </p>
+            follow us on our social media platform 
+            <div id="details_link">
+                <a href="https://web.facebook.com/profile.php?id=100086470384210"><img src="../Facebook.jpg"  /></a> 
+                <a href="http://wa.me/09157303724"> <img src="../Whatsapp.png"/></a> 
+                <a href=""><img src="../tiktok.png"/></a>
+                <a href=""> <img src="../Instagram.jfif"/> </a>
+                <a href=""> <img src="../Gmail.jfif"/></a>
+            </div>
+        </div>
+
+    </div>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8809630259604795" crossorigin="anonymous"></script>
+     <!-- simplifying the web -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-8809630259604795"
+        data-ad-slot="8600459374"
+        data-ad-format="auto"
+        data-full-width-responsive="true">
+    </ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+    <div class="page_advert">
+    <!--getting top_song from databas and displaying it in see more of news field-->    
+        <% if (blogs.length > 0) { %>
+            <% for (let i = 0; i < Math.min(4, blogs.length); i++) { %>
+                <a href="/top_song">
+                    <div class="page_advert_details">
+                            <%= blogs[i].artist_name %>
+                            <%= blogs[i].title %>
+                            <img src="../<%= blogs[i].image %>" type="image/jpeg" alt="image"/>
+                            download
+                            <div><%= blogs[i].comment %> </div>
+                    </div>
+                </a>
+               
+            <% } %>
+        <% } else { %>
+            <h2>no content to display</h2>
+        <% } %>
+        
+    </div>
+    <footer style="height:50px; width:100px; margin:0px auto; color:yellow;">
+        <p>&copy; Musikkat</p>
+    </footer>
+
+    <script src="../main.js"></script>
+</body>
+
+</html>

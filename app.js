@@ -5,6 +5,7 @@ const Blog= require('./blog');
 const Blogv= require('./blogv');
 const Blogn= require('./blogn');
 const Blogd= require('./blogd');
+const Blogg= require('./blogg');
 
 
 const dbUI= "mongodb+srv://bigdreamtech:hEB2eCSrJbA32irw@form.ilrxl.mongodb.net/?retryWrites=true&w=majority";
@@ -15,14 +16,17 @@ mongoose.connect(dbUI)
 .catch(err=>{
 	console.log(err);
 })
+mongoose.set('strictQuery', true)
 const app= express();
+// PORT CONNECTION
 
-app.listen(3001, (err)=>{
+const PORT = process.env.PORT || 3000
+app.listen(PORT, (err)=>{
 	if(err){
 		console.log(err);
 	}
 	else{
-		console.log("port running at 3001");
+		console.log(`Port running in ${PORT}`);
 		}
 })
 	app.set('view engine', 'ejs');
@@ -43,47 +47,106 @@ app.listen(3001, (err)=>{
 	  })
 	  
 	  const upload = multer({ storage: filestorage })
-	
-app.get('/', (req, res)=>{
-	Blog.find().sort({createdAt:-1})
-	.then((result)=>{
-		res.render('index', {title:"Home", blogs:result});
-	})
-	.catch((err)=>{
-		console.log(err) 
-	})
-})
-app.get('/download', (req, res)=>{
-	Blogd.find().sort({createdAt:-1})
-	.then(result=>{
-		res.render('download', {title:'Top_Song', blogds: result})
-	})
-	.catch(err=>{
+
+//HOME PAGE FOR UPCOMING ARTIST
+app.get('/', async (req, res)=>{
+	try{
+		const result = await Blog.find().sort({createdAt:-1})
+		const music = await Blogd.find().sort({createdAt:-1})
+		const news = await Blogn.find().sort({ createdAt: -1 });
+		const video = await Blogv.find().sort({ createdAt: -1 });
+		res.render('index', {title:'Home', blogs: result, news, music, video})
+	}
+	catch(err){
 		console.log(err)
-	})
-})
-app.get('/news_field', (req, res)=>{
-	Blogn.find().sort({createdAt:-1})
-	.then(result=>{
-		res.render('news_field', {title: "News_field", blogns: result})
-	})
-	.catch(err=>{
-		console.log(err);
-	})
+	}
 })
 
+// TOP NIGERIA AND FOREING MUSICIAN 
+app.get('/top_song', async (req, res)=>{
+	try{
+		const result = await Blogd.find().sort({createdAt:-1})
+		
+		res.render('top_song', {title:"Music", blogs:result});
+	}
+	catch(err){
+		console.log(err)
+	}
+})
+app.get('/top_song/:id', async (req, res)=>{
+	const id = req.params.id;
+	try{
+		const result = await Blogd.findById(id)
+		const top_songs = await Blog.find().sort({createdAt:-1})
+		res.render('detailsd', {blogd:result, blogs: top_songs, title:result.artist_name})
+	}
+	catch(err){
+		console.log(err)
+	}
+  }) 
+//godspel songs API
+app.get('/godspel', (req, res)=>{
+	Blogg.find().sort({createdArt:-1})
+.then(result=>{
+	res.render('godspel',{title: "Godspel", bloggs: result })
+})
+})
+
+app.get('/godspel/:id', async (req, res)=>{
+	const id = req.params.id;
+	try{
+		const godspelsong = await Blogg.findById(id)
+		const top_song = await Blogd.find()
+		console.log(top_song.image)
+		//const godspelsong = promise.json()
+		res.render('detailsg', {blogg: godspelsong, blogs:top_song, title: 'godspelsong.artist_name'})
+	}
+	catch(err){
+		console.log(err)
+	}
+	
+  }) 
+// NEWS FIELD
+app.get('/news_field', async (req, res) => {
+	try {
+	  const result = await Blogn.find().sort({ createdAt: -1 });
+	  res.render('news_field', { title: "News_field", blogns: result });
+	} catch (err) {
+	  console.log(err);
+	  res.status(500).send('Internal Server Error');
+	}
+  });
+  
+  
+app.get('/news_field/:id', async (req, res)=>{
+	const id = req.params.id;
+	try{
+		const result = await Blogn.findById(id)
+		
+	// get top song from database
+		const top_song = await Blogd.find()
+		res.render('detailsn', {blogn:result, blogs:top_song, title:result.helder})
+	}
+	catch(err){
+		console.log(err)
+	}
+  }) 
+
+//ABOUT THE AUTHOR OF THE SITE 
 app.get('/about', (req, res,)=>{
 	res.render('about', {title:"About"});
 })
-app.get('/short_video', (req, res)=>{
-	Blogv.find().sort({createdAt: -1})
-	.then(result=>{
-		res.render('short_video', {title: "Short_Video",  blogvs:result})
-	})
-	.catch(err=>{
-		console.log(err)
-	})
-})
+//SHORT VIDEOS FROM YOUTUBE
+app.get('/short_video', async (req, res) => {
+	try {
+	  const result = await Blogv.find().sort({ createdAt: -1 });
+	  res.render('short_video', { title: "Short_Video", blogvs: result });
+	} catch (err) {
+	  console.error(err);
+	}
+  });  
+  
+// ADMIN PAGE TO UPLOAD SONGS 
 app.get('/admin', (req, res)=>{
 	res.render('admin', {title:"Admin"});
 	
@@ -101,8 +164,7 @@ app.post('/admin', upload.fields([{ name: "image" }, { name: "audio" }]), (req, 
 	  blog.save(req.body)
 		.then(result => {
 		  res.redirect('admin')
-		  console.log(req.body)
-		})
+		 })
 		.catch(err => {
 		  console.log(err)
 		})
@@ -110,6 +172,7 @@ app.post('/admin', upload.fields([{ name: "image" }, { name: "audio" }]), (req, 
 	  const blogd = new Blogd({
 		artist_name: req.body.artist_name,
 		comment: req.body.comment,
+		lyrics: req.body.lyrics,
 		dlink: req.body.dlink,
 		plink: req.body.plink,
 		image: req.files["image"][0].filename
@@ -117,7 +180,7 @@ app.post('/admin', upload.fields([{ name: "image" }, { name: "audio" }]), (req, 
 	  blogd.save()
 		.then(result => {
 		  res.redirect('admin');
-		  console.log(req.files["image"][0].filename)
+		 
 		})
 		.catch(err => {
 		  console.log(err)
@@ -127,8 +190,7 @@ app.post('/admin', upload.fields([{ name: "image" }, { name: "audio" }]), (req, 
 	  blogv.save()
 		.then(result => {
 		  res.redirect('admin')
-		  console.log(req.body)
-		})
+		  })
 		.catch(err => {
 		  console.log(err)
 		})
@@ -137,6 +199,7 @@ app.post('/admin', upload.fields([{ name: "image" }, { name: "audio" }]), (req, 
 	  const blogn = new Blogn({
 		helder: req.body.helder,
 		news: req.body.news,
+		news1: req.body.news1,
 		image: req.files["image"][0].filename
 	  })
 	  blogn.save()
@@ -148,11 +211,55 @@ app.post('/admin', upload.fields([{ name: "image" }, { name: "audio" }]), (req, 
 		  console.log(err)
 		})
 	} else {
-	  console.log('you haven\'t treated this form yet')
-	  res.redirect('admin')
+		console.log('Gospel blog visited')
+		const blogg = new Blogg({
+			artist_name: req.body.artist_name,
+			comment: req.body.comment,
+			lyrics: req.body.lyrics,
+			dlink: req.body.dlink,
+			plink: req.body.plink,
+			image: req.files["image"][0].filename
+		})
+		blogg.save()
+		.then(result => {
+			
+		  res.redirect('admin');
+		})
+		.catch(err => {
+		  console.log(err)
+		})
 	}
   })
+ 
   
+ 
+  
+  app.get('/:id', async (req, res) => {
+    const id = req.params.id;
+    try {
+        let top_songs = await Blogd.find().sort({ createdAt: -1 });
+        let result = await Blogd.findById(id);
+        
+        if (result !== null && result !== undefined) {
+            // If the document exists in Blogd
+            res.render('detailsd', { blogd: result, blogs: top_songs, title: 'More' });
+        } else {
+            // If the document doesn't exist in Blogd, check Blog
+            result = await Blog.findById(id);
+            if (result !== null && result !== undefined) {
+                // If the document exists in Blog
+                res.render('details', { blog: result, music:top_songs, title: 'More' });
+            } else {
+                // If the document doesn't exist in Blog as well, render with null blog
+                res.render('details', { blog: null, blogs: top_songs, title: 'More' });
+            }
+        }
+    } catch (err) {
+        console.log(err);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
   
 app.get('/form', (req, res)=>{
 	res.render('form');

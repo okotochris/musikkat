@@ -22,7 +22,11 @@ const blog= new schema({
         type:String,
         require:true
     }
-    
+    , 
+    lyrics:{
+        type:String,
+        require:true
+    }
 
 }, {timestamps: true})
 

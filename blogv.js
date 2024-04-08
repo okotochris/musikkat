@@ -1,16 +1,16 @@
-const mongoose= require('mongoose');
-const schema= mongoose.Schema;
+const mongoose = require('mongoose');
+const schema = mongoose.Schema;
 
-const Blog= new schema({
-    link:{
+const Blog = new schema({
+    link: {
         type: String,
-        requrire:true
+        required: true
     },
-    content:{
+    content: {
         type: String,
-        require: true
+        required: true
     }
-}, {timestamp: true})
+}, { timestamps: true }); // Fix the typo here
 
-const Blogv= mongoose.model('Blogv', Blog);
-module.exports= Blogv;
+const Blogv = mongoose.model('Blogv', Blog);
+module.exports = Blogv;

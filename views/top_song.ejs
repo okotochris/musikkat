@@ -1,0 +1,67 @@
+<html>
+<%- include('partials/head.ejs')%>
+<body>
+    
+    <%- include('partials/header.ejs')%>
+    <div style="background:url('./music design.jpg');" class="design_container">
+        <h2  style="padding-top:20px;">download latest africa music</h2>
+        
+        <div class="container" >
+            <div class="search-container">
+                <input type="text" placeholder="Search for content" class="search"/><label>Search</label>
+                
+            </div>	
+        </div>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8809630259604795"
+     crossorigin="anonymous"></script>
+<!-- simplifying the web -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8809630259604795"
+     data-ad-slot="8600459374"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    </div>
+   <div class="download">
+            <div class="song-container">        
+            <div class="dsong">  
+                    <% if(blogs.length>0){ %>
+                        <%    blogs.forEach(blog=>{  %>
+                            
+                            <img src="<%= blog.image %>"/>
+                        <div class="news_click_more">
+                        <a href="./top_song/<%=blog._id %>" style="color:rgb(232, 232, 241);">
+                            <h3><%= blog.artist_name %></h3>
+                            <div style="max-height:130px; position:relative; overflow:hidden;">
+                                <P> 
+                                <%= blog.comment %>
+                                </P>
+                            </div>see more.....
+                        </a>
+                            <div class="dsong_box">
+                                <a href="<%= blog.dlink %>" download><img src="download icon.png" style="height:25px; width:25px;" /></a>
+                                <audio controls loop> <source src="<%= blog.plink %>"> </audio>
+                            </div> 
+                        </div>
+                        <div class="clear_float"></div>
+                        <hr/>
+                        <%   })  %>
+
+            
+                    <%  }else{  %>
+                            <h2>NO CONTENT TO DISPLAY CHECK AND REFRES YOUR NETWORK</h2>
+                    <%  }  %>
+                        
+            </div>
+
+        </div>
+    </div>
+
+
+
+<script src="main.js"></script>
+    </body>  
+</html>

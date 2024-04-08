@@ -1,0 +1,10 @@
+.about_container{
+    width:90%;
+    display:flex;
+    flex-direction:column;
+    flex-wrap:wrap;
+    justify-content:center;
+    align-items:center;
+    height:auto;
+    margin-top:50px;
+}
