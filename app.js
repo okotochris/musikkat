@@ -200,6 +200,7 @@ app.post('/admin', upload.fields([{ name: "image" }, { name: "audio" }]), (req, 
 		helder: req.body.helder,
 		news: req.body.news,
 		news1: req.body.news1,
+		news2: req.body.news2,
 		image: req.files["image"][0].filename
 	  })
 	  blogn.save()
