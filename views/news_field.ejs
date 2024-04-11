@@ -29,9 +29,9 @@
                                 <img src="<%= blogn.image %>" class="celebrity"/>
                         </a>   
                         <div class="news_click_more">
-                                <div style="max-height:180px; overflow:hidden; color:white;">
-                                    <a href="./news_field/<%=blogn._id %>" style="color:white">  <p> <%= blogn.news %> </p></a>
-                                    <p style="font-size:14px; margin-top:10px; color:rgb(201, 201, 201)">Date uploaded: <%= blogn.createdAt.toLocaleDateString() %></p>
+                                <div style="max-height:180px; overflow:hidden;">
+                                    <a href="./news_field/<%=blogn._id %>" >  <p> <%= blogn.news %> </p></a>
+                                    <p class="date_uploaded" style="color:rgb(206, 245, 98)">Date uploaded: <%= blogn.createdAt.toLocaleDateString() %></p>
                                 </div>
                        
                                <!--
