@@ -261,6 +261,19 @@ app.post('/admin', upload.fields([{ name: "image" }, { name: "audio" }]), (req, 
 });
 
   
+//ALL SEARCH API
+//HOME PAGE SEARCH
+app.post('/homepage-search', async (req, res) => {
+    const searchTerm = req.body.items;
+    try {
+        const result = await Blog.find({ artist_name: { $regex: new RegExp(searchTerm, 'i') } });
+        res.json(result);
+    } catch (err) {
+        res.status(500).json({ message: `No items found for '${searchTerm}'`, error: err.message });
+    }
+});
+
+
 app.get('/form', (req, res)=>{
 	res.render('form');
 })
