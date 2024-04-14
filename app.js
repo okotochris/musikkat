@@ -243,13 +243,13 @@ app.post('/admin', upload.fields([{ name: "image" }, { name: "audio" }]), (req, 
         
         if (result !== null && result !== undefined) {
             // If the document exists in Blogd
-            res.render('detailsd', { blogd: result, blogs: top_songs, title: 'More' });
+            res.render('detailsd', { blogd: result, blogs: top_songs, title:result.artist_name });
         } else {
             // If the document doesn't exist in Blogd, check Blog
             result = await Blog.findById(id);
             if (result !== null && result !== undefined) {
                 // If the document exists in Blog
-                res.render('details', { blog: result, music:top_songs, title: 'More' });
+                res.render('details', { blog: result, music:top_songs, title: result.artist_name });
             } else {
                 // If the document doesn't exist in Blog as well, render with null blog
                 res.render('details', { blog: null, blogs: top_songs, title: 'More' });

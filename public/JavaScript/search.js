@@ -1,6 +1,7 @@
 const searchInput = document.querySelector('.search'); // Assuming .search is the class of your input field
 const dataSearch = document.querySelector('.dataSearch')
-async function search() {
+const homeSearch = document.getElementById('homeSearch')
+homeSearch.onclick = async ()=>{
    
     try {
         const searchTerm = searchInput.value; // Get the value of the input field

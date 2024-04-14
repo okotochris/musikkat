@@ -12,7 +12,7 @@
 			<!--search container -->
             <div class="container" >
                 <div class="search-container">
-                    <input type="text" placeholder="Search for content" class="search"/><label onclick="search()">Search</label>
+                    <input type="text" placeholder="Search for content" class="search"/><label id="homeSearch">Search</label>
                 </div>	
 				
 				<div class="searchDiv" style="background:black;">
@@ -93,7 +93,7 @@
 			<p class="field_into"></p>
 			<div class="extra_news">
 				<h3><%= news[0].helder %></h3>
-				<img src="<%= news[0].image %>" alt="news_image" /> 
+				<img src="<%= news[0].image %>" alt="image" /> 
 				<p><%= news[0].news %></p>
 			</div>
 
