@@ -31,8 +31,8 @@
                     <% if(blogs.length>0){ %>
                         <%    blogs.forEach(blog=>{  %>
                             
-                            <img src="<%= blog.image %>"/>
-                        <div class="news_click_more">
+                        <img loading="lazy" src="<%= blog.image %>"/>
+                        <div loading="lazy" class="news_click_more">
                         <a href="./top_song/<%=blog._id %>" style="color:rgb(232, 232, 241);">
                             <h4><%= blog.artist_name %></h4>
                             <div style="max-height:130px; position:relative; overflow:hidden;">

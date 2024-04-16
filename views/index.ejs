@@ -32,7 +32,7 @@
 				<div class="image-display">
 					<% if (music.length > 0) { %>
 						<% for (let i = 0; i < Math.min(151, music.length); i++) { %>
-							<div class="image-display-style">
+							<div loading="lazy" class="image-display-style">
 								<div>
 									<a href="/<%= music[i]._id %>"><img src="<%= music[i].image %>" class="pix"/></a> 
 								</div>
@@ -66,7 +66,7 @@
 					<% for (let i = 0; i < Math.min(4, video.length); i++) { %>
 					<%	if(i == 0){ %>
 							<a href="/short_video">
-								<div class="video_container">
+								<div loading="lazy" class="video_container">
 									<iframe class="video_iframe" src="<%= video[i].link%>?autoplay=1&rel=0" autoplay allowfullscreen allow="autoplay"></iframe>
 								</div>
 							</a>
@@ -91,7 +91,7 @@
 			<!--- NEWs ON JHOMEPAGE-->
 
 			<p class="field_into"></p>
-			<div class="extra_news">
+			<div loading="lazy" class="extra_news">
 				<h3><%= news[0].helder %></h3>
 				<img src="<%= news[0].image %>" alt="image" /> 
 				<p><%= news[0].news %></p>
@@ -109,18 +109,18 @@
 						
 								<% if(blogs.length > 0){ %>
 								<%	blogs.forEach(blog=>{ %>
-						<aside>
+						<aside loading="lazy">
 							<div class="upcoming_download">
-								<img src="<%=blog.image %>" alt="chiab img" class="pix1"/>
+								<img loading="lazy" src="<%=blog.image %>" alt="chiab img" class="pix1"/>
 								<h2><%= blog.artist_name %></h2>
 								<div style="max-height:70px; overflow:hidden;"><p><%= blog.header %></p></div><a href="/<%=blog._id %>" style="color:rgb(125, 125, 199); cursor:pointer; ">see more...</a>
 							</div>	
-								<img src="<%= blog.image %>" alt="02ice"  class="dimg"/><br/>
+								<img laoding="lazy" src="<%= blog.image %>" alt="02ice"  class="dimg"/><br/>
 
 							<div class="upcoming_load">
 								<div style="height:30px; width:200px; overflow:hidden;"><p>for advert contact us </p></div>	
 								<div class="details-audio">
-									<a href="<%= blog.audio %>" download><img src="download icon.png" style="height:25px; width:25px;" /></a>
+									<a href="<%= blog.audio %>" download><img loading="lazy" src="download icon.png" style="height:25px; width:25px;" /></a>
 									<audio controls loop> <source src="<%= blog.audio %>" type="audio/mp3"/> </audio>
 								</div> 
 								<div class="see_more"><a style="color:rgb(169, 169, 239);;" href="/<%=blog._id %>">lyrics....</a></div>				

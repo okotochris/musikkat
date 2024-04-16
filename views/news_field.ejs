@@ -26,9 +26,9 @@
 
                         <a href="./news_field/<%=blogn._id %>"> 
                             <h3><%= blogn.helder   %></h3>
-                                <img src="<%= blogn.image %>" class="celebrity"/>
+                                <img loading="lazy" src="<%= blogn.image %>" class="celebrity"/>
                         </a>   
-                        <div class="news_click_more">
+                        <div loading="lazy" class="news_click_more">
                                 <div style="max-height:180px; overflow:hidden;">
                                     <a href="./news_field/<%=blogn._id %>" >  <p> <%= blogn.news %> </p></a>
                                     <p class="date_uploaded" style="color:rgb(206, 245, 98)">Date uploaded: <%= blogn.createdAt.toLocaleDateString() %></p>
