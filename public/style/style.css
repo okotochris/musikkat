@@ -481,9 +481,6 @@ div h2, h1, h3, h4{
 	flex-wrap:wrap;
 }
 .upcoming_load{
-	border-color:gold;
-	border-style:solid;
-	display:flex;
 	flex-wrap:wrap;
 	justify-content:center;
 	align-items:space-between;
@@ -494,7 +491,7 @@ div h2, h1, h3, h4{
 	text-align:center;
 }
 .upcoming_load button{
-	width:300px;
+	width:280px;
 	height:53px;
 	border-radius:10px;
 	font-size:17px;
