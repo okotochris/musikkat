@@ -27,7 +27,7 @@
                 <% if(blogvs.length > 0) { %>
                     <% blogvs.forEach(blogv => { %>
                         <div loading="lazy" class="flex-item">
-                            <iframe loading="lazy" height="320px" width="99.5%" src="<%= blogv.link%>&rel=0" allowfullscreen></iframe>
+                            <iframe  height="360px" width="99.5%" data-src="<%= blogv.link%>&rel=0" allowfullscreen class="lazy-load-video"></iframe>
                         </div>
                     <% }); %>
                 <% } else { %>
@@ -38,5 +38,6 @@
         </div>
 
         <script src="main.js"></script>
+        <script src="JavaScript/lazyload.js"></script>
     </body>
 </html>
