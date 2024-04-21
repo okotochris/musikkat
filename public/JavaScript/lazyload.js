@@ -15,11 +15,11 @@ document.addEventListener("DOMContentLoaded", function() {
           // Autoplay the video
           const iframe = entry.target;
           iframe.src = iframe.dataset.src; // Start loading the video
-          iframe.play(); // Autoplay the video
+         // iframe.play(); // Autoplay the video
         } else {
           // Pause the video
           const iframe = entry.target;
-          iframe.pause();
+         // iframe.pause();
         }
       });
     };
