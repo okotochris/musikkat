@@ -110,13 +110,12 @@
 						
 								<% if(blogs.length > 0){ %>
 								<%	blogs.forEach(blog=>{ %>
-						<aside loading="lazy">
+						<aside>
 							<div class="upcoming_download">
-								<img loading="lazy" src="<%=blog.image %>" alt="chiab img" class="pix1"/>
 								<h2><%= blog.artist_name %></h2>
 								<div style="max-height:70px; overflow:hidden;"><p><%= blog.header %></p></div><a href="/<%=blog._id %>" style="color:rgb(125, 125, 199); cursor:pointer; ">see more...</a>
 							</div>	
-								<img laoding="lazy" src="<%= blog.image %>" alt="02ice"  class="dimg"/><br/>
+								<img laoding="lazy" src="<%= blog.image %>" alt="<%=blog.artist_name %>"  class="dimg"/><br/>
 
 							<div class="upcoming_load">
 								
