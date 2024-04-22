@@ -88,7 +88,7 @@ app.get('/top_song/:id', async (req, res)=>{
 app.get('/godspel', (req, res)=>{
 	Blogg.find().sort({createdArt:-1})
 .then(result=>{
-	res.render('godspel',{title: "Godspel", bloggs: result })
+	res.render('godspel',{title: "Godspel Songs", bloggs: result })
 })
 })
 
@@ -96,10 +96,10 @@ app.get('/godspel/:id', async (req, res)=>{
 	const id = req.params.id;
 	try{
 		const godspelsong = await Blogg.findById(id)
-		const top_song = await Blogd.find()
+		const top_song = await Blogg.find()
 		console.log(top_song.image)
 		//const godspelsong = promise.json()
-		res.render('detailsg', {blogg: godspelsong, blogs:top_song, title: 'godspelsong.artist_name'})
+		res.render('detailsg', {blogg: godspelsong, blogs:top_song, title: godspelsong.artist_name})
 	}
 	catch(err){
 		console.log(err)
@@ -124,7 +124,7 @@ app.get('/news_field/:id', async (req, res)=>{
 		const result = await Blogn.findById(id)
 		
 	// get top song from database
-		const top_song = await Blogd.find()
+		const top_song = await Blogn.find().sort({createdAt:-1})
 		res.render('detailsn', {blogn:result, blogs:top_song, title:result.helder})
 	}
 	catch(err){
