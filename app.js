@@ -97,7 +97,6 @@ app.get('/godspel/:id', async (req, res)=>{
 	try{
 		const godspelsong = await Blogg.findById(id)
 		const top_song = await Blogg.find()
-		console.log(top_song.image)
 		//const godspelsong = promise.json()
 		res.render('detailsg', {blogg: godspelsong, blogs:top_song, title: godspelsong.artist_name})
 	}
