@@ -54,22 +54,30 @@
 
     <div class="page_advert">
     <!--getting top_song from databas and displaying it in see more of news field-->    
-        <% if (blogs.length > 0) { %>
-            <% for (let i = 0; i < Math.min(4, blogs.length); i++) { %>
-                <a href="/top_song">
-                    <div class="page_advert_details">
-                            <%= blogs[i].artist_name %>
-                            <%= blogs[i].title %>
-                            <img src="../<%= blogs[i].image %>" type="image/jpeg" alt="image"/>
-                            download
-                            <div><%= blogs[i].comment %> </div>
-                    </div>
-                </a>
-               
-            <% } %>
-        <% } else { %>
-            <h2>no content to display</h2>
+    <% if (blogs.length > 0) { %>
+        <% let indexes = []; %>
+        <% while (indexes.length < Math.min(4, blogs.length)) { %>
+            <% let randomIndex; %>
+            <% do { %>
+                <% randomIndex = Math.floor(Math.random() * blogs.length); %>
+            <% } while (indexes.includes(randomIndex)); %>
+            <% indexes.push(randomIndex); %>
         <% } %>
+        <% for (let i = 0; i < indexes.length; i++) { %>
+            <a href="../top_song/<%=blogs[indexes[i]]._id %>">
+                <div class="page_advert_details">
+                    <%= blogs[indexes[i]].artist_name %>
+                    <%= blogs[indexes[i]].title %>
+                    <img src="../<%= blogs[indexes[i]].image %>" type="image/jpeg" alt="image"/>
+                    download
+                    <div><%= blogs[indexes[i]].comment %> </div>
+                </div>
+            </a>
+        <% } %>
+    <% } else { %>
+        <h2>no content to display</h2>
+    <% } %>
+    
         
     </div>
     <footer style="height:50px; width:100px; margin:0px auto; color:yellow;">

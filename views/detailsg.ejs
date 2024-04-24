@@ -49,21 +49,31 @@
     <div class="page_advert">
         
         <% if (blogs.length > 0) { %>
-            <% for (let i = 0; i < 3; i++) { %>
-                <a href="/top_song">
-                    <div class="page_advert_details">
-                            <%= blogs[i].artist_name %>
-                            <%= blogs[i].title %>
-                            <img src="../<%= blogs[i].image %>" type="image/jpeg" alt="image"/>
-                            <p>download</p>
-                            <div><%= blogs[i].comment %> </div>
-                    </div>
-                </a>
-               
+            <% let indexes = []; %>
+            <% while (indexes.length < 3) { %>
+                <% let randomIndex; %>
+                <% do { %>
+                    <% randomIndex = Math.floor(Math.random() * blogs.length); %>
+                <% } while (indexes.includes(randomIndex)); %>
+                <% indexes.push(randomIndex); %>
+            <% } %>
+            <% for (let i = 0; i < indexes.length; i++) { %>
+                <a href="../godspel/<%= blogs[indexes[i]]._id %>">
+                <div class="page_advert_details">
+                
+                    <%= blogs[indexes[i]].artist_name %>
+                    <%= blogs[indexes[i]].title %>
+                    <img src="../<%= blogs[indexes[i]].image %>" type="image/jpeg" alt="image"/>
+                    <p>download</p> 
+                    <div><%= blogs[indexes[i]].comment %> </div>
+                
+                </div>
+              </a>
             <% } %>
         <% } else { %>
             <h2>no content to display</h2>
         <% } %>
+        
         
     </div>
     <footer style="height:50px; width:100px; margin:0px auto; color:yellow;">
