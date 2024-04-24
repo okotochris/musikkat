@@ -64,13 +64,13 @@
             <% indexes.push(randomIndex); %>
         <% } %>
         <% for (let i = 0; i < indexes.length; i++) { %>
-            <a href="../top_song/<%=blogs[indexes[i]]._id %>">
+            <a href="../news_field/<%=blogs[indexes[i]]._id %>">
                 <div class="page_advert_details">
                     <%= blogs[indexes[i]].artist_name %>
                     <%= blogs[indexes[i]].title %>
                     <img src="../<%= blogs[indexes[i]].image %>" type="image/jpeg" alt="image"/>
-                    download
-                    <div><%= blogs[indexes[i]].comment %> </div>
+              
+                    <div><%= blogs[indexes[i]].news %> </div>
                 </div>
             </a>
         <% } %>

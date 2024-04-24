@@ -6,6 +6,7 @@ const Blogv= require('./blogv');
 const Blogn= require('./blogn');
 const Blogd= require('./blogd');
 const Blogg= require('./blogg');
+const xmlbuilder = require('xmlbuilder'); // Import the xmlbuilder library
 
 
 const dbUI= "mongodb+srv://bigdreamtech:hEB2eCSrJbA32irw@form.ilrxl.mongodb.net/?retryWrites=true&w=majority";
@@ -77,7 +78,7 @@ app.get('/top_song/:id', async (req, res)=>{
 	const id = req.params.id;
 	try{
 		const result = await Blogd.findById(id)
-		const top_songs = await Blog.find().sort({createdAt:-1})
+		const top_songs = await Blogd.find().sort({createdAt:-1})
 		res.render('detailsd', {blogd:result, blogs: top_songs, title:result.artist_name})
 	}
 	catch(err){
@@ -274,6 +275,8 @@ app.post('/homepage-search', async (req, res) => {
 });
 
 
+
+//
 app.get('/form', (req, res)=>{
 	res.render('form');
 })
