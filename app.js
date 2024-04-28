@@ -8,7 +8,6 @@ const Blogd= require('./blogd');
 const Blogg= require('./blogg');
 
 
-
 const dbUI= "mongodb+srv://bigdreamtech:hEB2eCSrJbA32irw@form.ilrxl.mongodb.net/?retryWrites=true&w=majority";
 mongoose.connect(dbUI)
 .then(result=>{

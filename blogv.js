@@ -6,10 +6,11 @@ const Blog = new schema({
         type: String,
         required: true
     },
+   
     content: {
         type: String,
         required: true
-    }
+    },
 }, { timestamps: true }); // Fix the typo here
 
 const Blogv = mongoose.model('Blogv', Blog);

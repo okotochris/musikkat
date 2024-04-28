@@ -18,6 +18,7 @@ const blog= new schema({
         type:String,
         require:true
     },
+    
     plink:{
         type:String,
         require:true
@@ -26,7 +27,8 @@ const blog= new schema({
     lyrics:{
         type:String,
         require:true
-    }
+    },
+    
 
 }, {timestamps: true})
 
