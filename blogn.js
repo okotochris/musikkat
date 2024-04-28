@@ -18,10 +18,12 @@ const Blog= new schema({
         type: String,
         require: true
     },
+   
     image:{
         type: String, 
         require: true
-    }
+    },
+    
 }, {timestamps: true})
 
 const Blogn= mongoose.model('Blogn', Blog);

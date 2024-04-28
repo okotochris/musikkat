@@ -1,34 +1,33 @@
-const mongoose= require('mongoose');
-const schema= mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const blog= new schema({
-    artist_name:{
+const blogSchema = new Schema({
+    artist_name: {
         type: String,
-        require: true
+        required: true
     },
-    comment:{
-        type:String,
-        require:true
+    comment: {
+        type: String,
+        required: true
     },
-    dlink:{
-        type:String,
-        require:true
+    dlink: {
+        type: String,
+        required: true
     },
-    image:{
-        type:String,
-        require:true
+    image: {
+        type: String,
+        required: true
     },
-    plink:{
-        type:String,
-        require:true
-    }
-    , 
-    lyrics:{
-        type:String,
-        require:true
-    }
+    plink: {
+        type: String,
+        required: true
+    },
+    lyrics: {
+        type: String,
+        required: true
+    },
+    
+}, { timestamps: true });
 
-}, {timestamps: true})
-
-const Blogd =mongoose.model('Blogd', blog);
-module.exports= Blogd;
+const Blogd = mongoose.model('Blogd', blogSchema);
+module.exports = Blogd;
