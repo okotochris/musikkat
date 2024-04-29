@@ -30,11 +30,11 @@
             <div class="dsong">  
                     <% if(blogs.length>0){ %>
                         <%    blogs.forEach(blog=>{  %>
-                            
-                        <img loading="lazy" src="<%= blog.image %>"/>
+                            <a href="./top_song/<%=blog._id %>" style="color:rgb(232, 232, 241);"><h4><%= blog.artist_name %></h4>  
+                                <img loading="lazy" src="<%= blog.image %>"/>
+                            </a>
                         <div class="news_click_more">
                             <a href="./top_song/<%=blog._id %>" style="color:rgb(232, 232, 241);">
-                              <h4><%= blog.artist_name %></h4>
                               <div style="max-height:120px; position:relative; font-size:1em; overflow:hidden;">
                                 <P> 
                                 <%= blog.comment %>

@@ -31,7 +31,7 @@
 			<div class="image-container">
 				<div class="image-display">
 					<% if (music.length > 0) { %>
-						<% for (let i = 0; i < Math.min(151, music.length); i++) { %>
+						<% for (let i = 0; i <= 10; i++) { %>
 							<div loading="lazy" class="image-display-style">
 								<div>
 									<a href="/<%= music[i]._id %>"><img src="<%= music[i].image %>" class="pix"/></a> 
