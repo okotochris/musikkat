@@ -7,7 +7,7 @@
 
         <div style="background:url('./news headline.jpg');"  class="design_container">
 
-            <h1  style="padding-top:20px;">get the latest treading news </h1>
+            <h2  style="padding-top:20px;">get the latest treading news </h2>
             <p>stay tune as we bring you the latest happening around the world </p>
             <div class="container" >
                 <div class="search-container">
@@ -15,8 +15,7 @@
                 </div>	
             </div>
         </div>
-    
-			
+ 			
             <div class="news_field"> 
                 <div class="news">
 
@@ -25,7 +24,7 @@
                        <%     blogns.forEach(blogn=>{ %>
 
                         <a href="./news_field/<%=blogn._id %>"> 
-                            <h3><%= blogn.helder   %></h3>
+                            <h4><%= blogn.helder   %></h4>
                                 <img loading="lazy" src="<%= blogn.image %>" class="celebrity"/>
                         </a>   
                         <div loading="lazy" class="news_click_more">
@@ -33,14 +32,12 @@
                                     <a href="./news_field/<%=blogn._id %>" >  <p> <%= blogn.news %> </p></a>
                                     <p class="date_uploaded" style="color:rgb(206, 245, 98)">Date uploaded: <%= blogn.createdAt.toLocaleDateString() %></p>
                                 </div>
-                       
-                               <!--
-
+                       <!--
                                 <div class="likes">
                                     <span style="height:auto; width:auto; padding:0px 0px 0px 2px;">333</span><img src="like.png" style="height:25px; width:25px"/>
                                     <span style="height:auto; width:auto; padding:0px 0px 0px 2px;">3k</span><img src="dislike.png" style="height:25px; width:25px"/>
                                 </div>
-                                -->
+                            -->
                         </div>
                                 <div class="clear_float"  ></div>
                            
@@ -50,13 +47,9 @@
                             <h2>NO CONTENT TO DISPLAY PLEAE MAKE SURE YOUR INTERNET IS ON </h2>
                        <% } %>
                     </div>
-
-
-
-                       
-                       
+       
                 </div>     
             </div>
-                        <script src="main.js"></script> 
+        <script src="main.js"></script> 
     </body>
 </html>
