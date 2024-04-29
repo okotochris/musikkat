@@ -1,33 +1,31 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Get all iframes with the "lazy-load-video" class
-    const videos = document.querySelectorAll('.lazy-load-video');
-    
-    // Options for the Intersection Observer
-    const options = {
-      root: null, // Use the viewport as the root
-      threshold: 0.5 // Trigger when 50% of the iframe is visible
-    };
+  // Get all iframes with the "lazy-load-video" class
+  const videos = document.querySelectorAll('.lazy-load-video');
   
-    // Callback function when an iframe intersects with the viewport
-    const handleIntersection = (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          // Autoplay the video
-          const iframe = entry.target;
-          iframe.src = iframe.dataset.src; // Start loading the video
-         iframe.play(); // Autoplay the video
-        } else {
-          // Pause the video
-          const iframe = entry.target;
-          iframe.pause();
-        }
-      });
-    };
-  
-    // Create an Intersection Observer instance for each iframe
-    videos.forEach(video => {
-      const observer = new IntersectionObserver(handleIntersection, options);
-      observer.observe(video);
+  // Object to track whether video source has been loaded
+  const videoLoaded = {};
+
+  // Options for the Intersection Observer
+  const options = {
+    root: null, // Use the viewport as the root
+    threshold: 0 // Trigger when the video enters the viewport
+  };
+
+  // Callback function when a video intersects with the viewport
+  const handleIntersection = (entries) => {
+    entries.forEach(entry => {
+      const video = entry.target;
+      if (entry.isIntersecting && !videoLoaded[video.dataset.src]) {
+        // Load the video source only if it hasn't been loaded before
+        video.src = video.dataset.src;
+        videoLoaded[video.dataset.src] = true; // Set the flag to true
+      }
     });
+  };
+
+  // Create an Intersection Observer instance for each video
+  videos.forEach(video => {
+    const observer = new IntersectionObserver(handleIntersection, options);
+    observer.observe(video);
   });
-  
+});

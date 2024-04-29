@@ -121,7 +121,7 @@
 								
 								<div class="details-audio">
 									<a href="<%= blog.audio %>" download><img src="download icon.png" style="height:25px; width:25px;" /></a>
-									<audio controls loop> <source src="<%= blog.audio %>" type="audio/mp3"/> </audio>
+									<audio controls loop class="lazy-load-audio" data-src="<%= blog.audio %>"> </audio>
 								</div> 
 								
 							</div>
@@ -139,5 +139,6 @@
 				
 			</div>
 			<script src="main.js"></script>
-			<script src="./JavaScript/search.js"></script>
+			<script src="./JavaScript/search.js"></script>\
+			<script src="JavaScript/lazysongloading.js"></script>
 	</body>
